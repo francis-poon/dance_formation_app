@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ligh7w1gyua6"]
+
+[ext_resource type="Script" uid="uid://c8mtw212ym66x" path="res://07-30_08-05 dance formation app/formation_manager/formation_button.gd" id="1_cijrj"]
+
+[node name="FormationButton" type="Button"]
+custom_minimum_size = Vector2(60, 60)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_cijrj")
+_preview_modulation = Color(0.257853, 0.285909, 0.452684, 0.870588)
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

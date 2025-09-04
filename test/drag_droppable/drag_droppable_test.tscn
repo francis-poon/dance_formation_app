@@ -1,0 +1,169 @@
+[gd_scene load_steps=13 format=3 uid="uid://dyls78bmav8jf"]
+
+[ext_resource type="Script" uid="uid://dlfx2dqnkjjfg" path="res://test/drag_droppable/draggable.gd" id="1_o102j"]
+[ext_resource type="Script" uid="uid://bsqv5yxf2bikx" path="res://test/drag_droppable/draggable_button.gd" id="1_wd5se"]
+[ext_resource type="Texture2D" uid="uid://i8pkolgal7j1" path="res://assets/blacknwhite/peach.png" id="2_dy366"]
+[ext_resource type="Script" uid="uid://0dsk2rcuxxsq" path="res://test/drag_droppable/draggable_b.gd" id="2_k8cos"]
+[ext_resource type="Texture2D" uid="uid://cq7bavf2ce35f" path="res://assets/blacknwhite/strawberry.png" id="4_5hf2c"]
+[ext_resource type="Texture2D" uid="uid://b3x3mn7wggntl" path="res://assets/blacknwhite/blueberry.png" id="5_h7c6y"]
+[ext_resource type="Script" uid="uid://bwawx1ylv3ejt" path="res://test/drag_droppable/scroll_timeline_proto.gd" id="6_gwfuy"]
+[ext_resource type="Script" uid="uid://b2l1tetlepcs0" path="res://test/drag_droppable/droppable_timeline.gd" id="7_gwfuy"]
+[ext_resource type="Texture2D" uid="uid://i0as5ify5rt6" path="res://assets/lockpick/pinhole_locked.png" id="7_p1wi1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1wi1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gwfuy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p1wi1"]
+texture = ExtResource("7_p1wi1")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+
+[node name="DragDroppableTest" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("drop_data_asset")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("1_wd5se")
+drop_data_asset = NodePath("TextureRect2")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 41.0
+texture = ExtResource("2_dy366")
+script = ExtResource("2_k8cos")
+data = "Peach"
+
+[node name="Button2" type="Button" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("drop_data_asset")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("1_wd5se")
+drop_data_asset = NodePath("TextureRect2")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button2"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 41.0
+texture = ExtResource("4_5hf2c")
+script = ExtResource("2_k8cos")
+data = "Strawberry"
+
+[node name="Button3" type="Button" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("drop_data_asset")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("1_wd5se")
+drop_data_asset = NodePath("TextureRect2")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HBoxContainer/Button3"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 41.0
+texture = ExtResource("5_h7c6y")
+script = ExtResource("2_k8cos")
+data = "Blueberry"
+
+[node name="Control" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("c_rect", "drop_data_asset")]
+visible = false
+z_index = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_o102j")
+c_rect = NodePath("ColorRect")
+drop_data_asset = NodePath("TextureRect")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_dy366")
+script = ExtResource("2_k8cos")
+data = "Strawberry"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer" node_paths=PackedStringArray("timeline_scroll", "timeline", "label")]
+z_index = -1
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("6_gwfuy")
+timeline_scroll = NodePath("ColorRect2/HScrollBar")
+timeline = NodePath("ColorRect2")
+label = NodePath("../Label")
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/ScrollContainer" node_paths=PackedStringArray("holder")]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+script = ExtResource("7_gwfuy")
+holder = NodePath("Control")
+
+[node name="HScrollBar" type="HScrollBar" parent="CanvasLayer/ScrollContainer/ColorRect2"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/scroll = SubResource("StyleBoxEmpty_p1wi1")
+theme_override_styles/scroll_focus = SubResource("StyleBoxEmpty_gwfuy")
+theme_override_styles/grabber = SubResource("StyleBoxTexture_p1wi1")
+theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_p1wi1")
+theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_p1wi1")
+value = 20.0
+
+[node name="Control" type="Control" parent="CanvasLayer/ScrollContainer/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+
+[connection signal="data_updated" from="CanvasLayer/ScrollContainer/ColorRect2" to="CanvasLayer/ScrollContainer" method="_on_color_rect_2_data_updated"]
+[connection signal="value_changed" from="CanvasLayer/ScrollContainer/ColorRect2/HScrollBar" to="CanvasLayer/ScrollContainer" method="_on_h_scroll_bar_value_changed"]

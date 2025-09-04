@@ -1,0 +1,89 @@
+[gd_resource type="Resource" script_class="DanceFormationCollection" load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://07-30_08-05 dance formation app/formation_manager/formation.gd" id="1_7tntv"]
+[ext_resource type="PackedScene" path="res://07-30_08-05 dance formation app/dancer_manager/dancer.tscn" id="2_gkyx0"]
+[ext_resource type="Script" path="res://07-30_08-05 dance formation app/resources/formation_data.gd" id="3_twhu1"]
+[ext_resource type="Texture2D" path="res://assets/blacknwhite/peach.png" id="4_narca"]
+[ext_resource type="Script" path="res://07-30_08-05 dance formation app/dancer_manager/dancer.gd" id="5_gkyx0"]
+[ext_resource type="Script" path="res://07-30_08-05 dance formation app/resources/formation_collection.gd" id="5_ncipv"]
+
+[sub_resource type="Resource" id="Resource_d56t4"]
+script = ExtResource("3_twhu1")
+id = 509616133
+dancer_positions = Array[Vector2]([])
+
+[sub_resource type="PackedScene" id="PackedScene_twhu1"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Formation2", "script", "dancer_scene", "data", "Node2D", "Sprite2D", "position", "texture", "Sprite2D2", "Sprite2D3"),
+"node_count": 4,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 5, 5, -1, 2, 6, 3, 7, 4, 0, 0, 0, 5, 8, -1, 2, 6, 5, 7, 4, 0, 0, 0, 5, 9, -1, 2, 6, 6, 7, 4, 0),
+"variants": [ExtResource("1_7tntv"), ExtResource("2_gkyx0"), SubResource("Resource_d56t4"), Vector2(300, 35), ExtResource("4_narca"), Vector2(137, 263), Vector2(299, 144)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_narca"]
+script = ExtResource("3_twhu1")
+id = 2030286953
+dancer_positions = Array[Vector2]([])
+
+[sub_resource type="PackedScene" id="PackedScene_narca"]
+_bundled = {
+"conn_count": 6,
+"conns": PackedInt32Array(1, 1, 11, 10, 2, 0, 0, 1, 1, 13, 12, 2, 0, 0, 2, 2, 11, 10, 2, 0, 0, 2, 2, 13, 12, 2, 0, 0, 3, 3, 11, 10, 2, 0, 0, 3, 3, 13, 12, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Formation", "script", "dancer_scene", "data", "Node2D", "Dancer", "position", "Area2D", "@Area2D@5", "@Area2D@6", "_on_mouse_entered", "mouse_entered", "_on_mouse_exited", "mouse_exited"),
+"node_count": 4,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 7, 5, 1, 2, 6, 3, 1, 4, 0, 0, 0, 7, 8, 1, 2, 6, 5, 1, 4, 0, 0, 0, 7, 9, 1, 2, 6, 6, 1, 4, 0),
+"variants": [ExtResource("1_7tntv"), ExtResource("2_gkyx0"), SubResource("Resource_narca"), Vector2(302, 118), ExtResource("5_gkyx0"), Vector2(176, 162), Vector2(465, 161)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_fosh7"]
+script = ExtResource("3_twhu1")
+id = 3282906186
+dancer_positions = Array[Vector2]([])
+
+[sub_resource type="PackedScene" id="PackedScene_ncipv"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Formation1", "script", "dancer_scene", "data", "Node2D", "Sprite2D", "position", "texture", "Sprite2D2", "Sprite2D3"),
+"node_count": 4,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 5, 5, -1, 2, 6, 3, 7, 4, 0, 0, 0, 5, 8, -1, 2, 6, 5, 7, 4, 0, 0, 0, 5, 9, -1, 2, 6, 6, 7, 4, 0),
+"variants": [ExtResource("1_7tntv"), ExtResource("2_gkyx0"), SubResource("Resource_fosh7"), Vector2(301, 40), ExtResource("4_narca"), Vector2(302, 246), Vector2(299, 144)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_l4val"]
+script = ExtResource("3_twhu1")
+id = 3845975458
+dancer_positions = Array[Vector2]([])
+
+[sub_resource type="PackedScene" id="PackedScene_l4val"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Formation0", "script", "dancer_scene", "data", "Node2D", "Sprite2D", "position", "texture", "Sprite2D2", "Sprite2D3"),
+"node_count": 4,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 5, 5, -1, 2, 6, 3, 7, 4, 0, 0, 0, 5, 8, -1, 2, 6, 5, 7, 4, 0, 0, 0, 5, 9, -1, 2, 6, 6, 7, 4, 0),
+"variants": [ExtResource("1_7tntv"), ExtResource("2_gkyx0"), SubResource("Resource_l4val"), Vector2(504, 145), ExtResource("4_narca"), Vector2(140, 141), Vector2(299, 144)],
+"version": 3
+}
+
+[resource]
+script = ExtResource("5_ncipv")
+id_formation_dict = {
+509616133: SubResource("PackedScene_twhu1"),
+2030286953: SubResource("PackedScene_narca"),
+3282906186: SubResource("PackedScene_ncipv"),
+3845975458: SubResource("PackedScene_l4val")
+}

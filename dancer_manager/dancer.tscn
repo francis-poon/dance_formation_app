@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfdfc7bs14n35"]
+
+[ext_resource type="Texture2D" uid="uid://i8pkolgal7j1" path="res://assets/blacknwhite/peach.png" id="1_hatbp"]
+[ext_resource type="Script" uid="uid://b1up6kx4kvukg" path="res://07-30_08-05 dance formation app/dancer_manager/dancer.gd" id="1_telqb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_telqb"]
+size = Vector2(34, 42)
+
+[node name="Dancer" type="Area2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_telqb")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hatbp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_telqb")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

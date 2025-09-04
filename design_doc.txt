@@ -1,0 +1,15 @@
+need to reimpliment timeline to actually show dance formations
+right now the prototype version looks for a TestDroppable
+change this to look for a dance formation preview
+make dance formation buttons give a dance formation preview
+
+Dance formation
+can display on screen
+can be selected with button
+can be placed on timeline
+can be edited
+has an id to be referenced
+has dancers
+
+should i have some kind of singleton that holds all the of the formations and can be referenced using
+id? 

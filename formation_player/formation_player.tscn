@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://wk30khyi3mu6"]
+
+[ext_resource type="Script" uid="uid://cadwljguendhq" path="res://formation_player/formation_player.gd" id="1_fmsq7"]
+[ext_resource type="PackedScene" uid="uid://di0qr31j0do0p" path="res://formation_manager/formation_display.tscn" id="1_navmu"]
+[ext_resource type="PackedScene" uid="uid://dgoaa7vcfvsd2" path="res://formation_timeline/formation_timeline.tscn" id="2_fmsq7"]
+
+[node name="FormationPlayer" type="Control" node_paths=PackedStringArray("formation_display")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_fmsq7")
+formation_display = NodePath("VBoxContainer/FormationDisplay")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FormationDisplay" parent="VBoxContainer" instance=ExtResource("1_navmu")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FormationTimeline" parent="VBoxContainer" instance=ExtResource("2_fmsq7")]
+layout_mode = 2
+
+[connection signal="display_formation" from="VBoxContainer/FormationTimeline" to="." method="_on_formation_timeline_display_formation"]

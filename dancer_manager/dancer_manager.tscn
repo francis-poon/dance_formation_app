@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://br5npltmys78s"]
+
+[ext_resource type="Script" uid="uid://y0210j38bpue" path="res://07-30_08-05 dance formation app/dancer_manager/dancer_manager.gd" id="1_a856p"]
+[ext_resource type="PackedScene" uid="uid://f881xvvr4vq7" path="res://07-30_08-05 dance formation app/dancer_manager/dancer_button.tscn" id="2_cg22b"]
+
+[node name="DancerManager" type="Control" node_paths=PackedStringArray("dancer_select_panel")]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_a856p")
+dancer_button_template = ExtResource("2_cg22b")
+dancer_select_panel = NodePath("VBoxContainer/ScrollContainer/GridContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+
+[node name="AddDancerButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/AddDancerButton" to="." method="_on_add_dancer_button_pressed"]

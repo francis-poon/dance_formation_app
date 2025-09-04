@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DanceFormationCollection" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://07-30_08-05 dance formation app/resources/formation_data.gd" id="1_bqjsw"]
+[ext_resource type="Script" path="res://07-30_08-05 dance formation app/resources/formation_collection.gd" id="2_4exk6"]
+
+[sub_resource type="Resource" id="Resource_bqjsw"]
+script = ExtResource("1_bqjsw")
+id = 1180289113
+dancer_positions = Array[Vector2]([Vector2(248, 178), Vector2(319, 85), Vector2(329, 132)])
+
+[sub_resource type="Resource" id="Resource_4exk6"]
+script = ExtResource("1_bqjsw")
+id = 3996828404
+dancer_positions = Array[Vector2]([Vector2(136, 114), Vector2(225, 111), Vector2(306, 113), Vector2(380, 115), Vector2(466, 119)])
+
+[resource]
+script = ExtResource("2_4exk6")
+formations = Array[ExtResource("1_bqjsw")]([SubResource("Resource_bqjsw"), SubResource("Resource_4exk6")])

@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://db31c3kgo31wt"]
+
+[ext_resource type="Script" uid="uid://dns5saivqitic" path="res://07-30_08-05 dance formation app/experimental/experimental_formation_editor.gd" id="1_e1xob"]
+[ext_resource type="Texture2D" uid="uid://i8pkolgal7j1" path="res://assets/blacknwhite/peach.png" id="2_r5yuq"]
+[ext_resource type="Script" uid="uid://bviw0hct1ma1l" path="res://07-30_08-05 dance formation app/experimental/sub_viewport_container.gd" id="3_30t6v"]
+[ext_resource type="PackedScene" uid="uid://br5npltmys78s" path="res://07-30_08-05 dance formation app/dancer_manager/dancer_manager.tscn" id="4_ovkj0"]
+
+[node name="FormationEditor" type="Control" node_paths=PackedStringArray("sub_viewport_container", "sprite_temp", "target")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e1xob")
+sub_viewport_container = NodePath("SubViewportContainer")
+sprite_temp = NodePath("Sprite2D2")
+target = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 40.0
+offset_right = 623.0
+offset_bottom = 325.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("2_r5yuq")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." node_paths=PackedStringArray("sprite_template", "sub_viewport", "label")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_30t6v")
+sprite_template = NodePath("Sprite2D")
+sub_viewport = NodePath("SubViewport")
+label = NodePath("Label")
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer"]
+texture = ExtResource("2_r5yuq")
+
+[node name="Label" type="Label" parent="SubViewportContainer"]
+layout_mode = 2
+
+[node name="DancerManager" parent="." instance=ExtResource("4_ovkj0")]
+layout_mode = 1
+
+[connection signal="dancer_dropped" from="DancerManager" to="." method="_on_dancer_manager_dancer_dropped"]

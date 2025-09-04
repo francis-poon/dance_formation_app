@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://65wijq1xq78b"]
+
+[ext_resource type="Script" uid="uid://ckkfy685na1wu" path="res://07-30_08-05 dance formation app/formation_manager/temp/temp.gd" id="1_5kjea"]
+[ext_resource type="PackedScene" uid="uid://kmep7jy02ke" path="res://07-30_08-05 dance formation app/formation_manager/formation.tscn" id="2_eo6cj"]
+[ext_resource type="Texture2D" uid="uid://i8pkolgal7j1" path="res://assets/blacknwhite/peach.png" id="3_5oeu5"]
+
+[node name="Temp" type="Node2D"]
+script = ExtResource("1_5kjea")
+
+[node name="Formation0" parent="." instance=ExtResource("2_eo6cj")]
+visible = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Formation0"]
+position = Vector2(504, 145)
+texture = ExtResource("3_5oeu5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Formation0"]
+position = Vector2(140, 141)
+texture = ExtResource("3_5oeu5")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Formation0"]
+position = Vector2(299, 144)
+texture = ExtResource("3_5oeu5")
+
+[node name="Formation1" parent="." instance=ExtResource("2_eo6cj")]
+visible = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Formation1"]
+position = Vector2(301, 40)
+texture = ExtResource("3_5oeu5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Formation1"]
+position = Vector2(302, 246)
+texture = ExtResource("3_5oeu5")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Formation1"]
+position = Vector2(299, 144)
+texture = ExtResource("3_5oeu5")
+
+[node name="Formation2" parent="." instance=ExtResource("2_eo6cj")]
+visible = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Formation2"]
+position = Vector2(300, 35)
+texture = ExtResource("3_5oeu5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Formation2"]
+position = Vector2(137, 263)
+texture = ExtResource("3_5oeu5")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Formation2"]
+position = Vector2(299, 144)
+texture = ExtResource("3_5oeu5")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://f881xvvr4vq7"]
+
+[ext_resource type="Texture2D" uid="uid://i8pkolgal7j1" path="res://assets/blacknwhite/peach.png" id="1_q2uhf"]
+[ext_resource type="Script" uid="uid://dkmtvfeaijjxg" path="res://07-30_08-05 dance formation app/dancer_manager/dancer_button.gd" id="1_qxl0r"]
+
+[node name="DancerButton" type="Control" node_paths=PackedStringArray("dancer_drop_marker")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qxl0r")
+dancer_drop_marker = NodePath("DancerDropMarker")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+keep_pressed_outside = true
+
+[node name="TextureRect" type="TextureRect" parent="Button"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_q2uhf")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DancerDropMarker" type="Sprite2D" parent="."]
+visible = false
+top_level = true
+position = Vector2(253, 109)
+texture = ExtResource("1_q2uhf")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

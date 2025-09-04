@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://bofs2pvi3dxg3"]
+
+[ext_resource type="Script" uid="uid://bn3lbet1u3ty5" path="res://07-30_08-05 dance formation app/experimental/experimental_playback.gd" id="1_j1pfu"]
+[ext_resource type="PackedScene" uid="uid://bfdfc7bs14n35" path="res://07-30_08-05 dance formation app/dancer_manager/dancer.tscn" id="2_i3jjh"]
+[ext_resource type="Texture2D" uid="uid://cw1ha3c6dffj" path="res://assets/blacknwhite/target.png" id="3_yfeaq"]
+[ext_resource type="Script" uid="uid://dndjfnya376v6" path="res://07-30_08-05 dance formation app/experimental/h_slider.gd" id="4_gqypq"]
+
+[node name="main" type="Node2D" node_paths=PackedStringArray("dancer_containers")]
+script = ExtResource("1_j1pfu")
+dancer_containers = [NodePath("DancerA"), NodePath("DancerB"), NodePath("DancerC")]
+target_times = Array[float]([0.0, 50.0, 100.0])
+
+[node name="DancerA" type="Node" parent="."]
+
+[node name="Dancer" parent="DancerA" node_paths=PackedStringArray("slider") instance=ExtResource("2_i3jjh")]
+slider = NodePath("../../CanvasLayer/HSlider")
+
+[node name="Targets" type="Node2D" parent="DancerA"]
+visible = false
+
+[node name="Target1" type="Sprite2D" parent="DancerA/Targets"]
+position = Vector2(306, 258)
+texture = ExtResource("3_yfeaq")
+
+[node name="Target2" type="Sprite2D" parent="DancerA/Targets"]
+position = Vector2(304, 61)
+texture = ExtResource("3_yfeaq")
+
+[node name="Target3" type="Sprite2D" parent="DancerA/Targets"]
+position = Vector2(187, 72)
+texture = ExtResource("3_yfeaq")
+
+[node name="DancerB" type="Node" parent="."]
+
+[node name="Dancer" parent="DancerB" node_paths=PackedStringArray("slider") instance=ExtResource("2_i3jjh")]
+slider = NodePath("../../CanvasLayer/HSlider")
+
+[node name="Targets" type="Node2D" parent="DancerB"]
+visible = false
+
+[node name="Target1" type="Sprite2D" parent="DancerB/Targets"]
+position = Vector2(395, 214)
+texture = ExtResource("3_yfeaq")
+
+[node name="Target2" type="Sprite2D" parent="DancerB/Targets"]
+position = Vector2(304, 145)
+texture = ExtResource("3_yfeaq")
+
+[node name="Target3" type="Sprite2D" parent="DancerB/Targets"]
+position = Vector2(432, 198)
+texture = ExtResource("3_yfeaq")
+
+[node name="DancerC" type="Node" parent="."]
+
+[node name="Dancer" parent="DancerC" node_paths=PackedStringArray("slider") instance=ExtResource("2_i3jjh")]
+slider = NodePath("../../CanvasLayer/HSlider")
+
+[node name="Targets" type="Node2D" parent="DancerC"]
+visible = false
+
+[node name="Target1" type="Sprite2D" parent="DancerC/Targets"]
+position = Vector2(218, 212)
+texture = ExtResource("3_yfeaq")
+
+[node name="Target2" type="Sprite2D" parent="DancerC/Targets"]
+position = Vector2(304, 229)
+texture = ExtResource("3_yfeaq")
+
+[node name="Target3" type="Sprite2D" parent="DancerC/Targets"]
+position = Vector2(304, 145)
+texture = ExtResource("3_yfeaq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -47.0
+offset_right = -12.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+step = 0.0
+script = ExtResource("4_gqypq")
+
+[connection signal="value_changed" from="CanvasLayer/HSlider" to="." method="_on_h_slider_value_changed"]

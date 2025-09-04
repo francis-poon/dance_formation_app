@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf7grrrh4sti"]
+
+[ext_resource type="Script" uid="uid://1ialo7vjlwiv" path="res://07-30_08-05 dance formation app/experimental/test.gd" id="1_8n03h"]
+[ext_resource type="Texture2D" uid="uid://i8pkolgal7j1" path="res://assets/blacknwhite/peach.png" id="2_iga3l"]
+
+[node name="Test" type="Node2D" node_paths=PackedStringArray("sprite", "label")]
+script = ExtResource("1_8n03h")
+sprite = NodePath("Sprite2D")
+label = NodePath("CanvasLayer/Label")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_iga3l")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
