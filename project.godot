@@ -15,10 +15,6 @@ run/main_scene="uid://00ekigx16v67"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-GundamGameEvents="res://07-16-07-22 gundam shooter/gundam_game_events.gd"
-
 [display]
 
 window/size/viewport_width=640
