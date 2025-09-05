@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgoaa7vcfvsd2"]
+[gd_scene load_steps=8 format=3 uid="uid://dgoaa7vcfvsd2"]
 
 [ext_resource type="Script" uid="uid://bwawx1ylv3ejt" path="res://test/drag_droppable/scroll_timeline_proto.gd" id="1_6jie6"]
 [ext_resource type="Script" uid="uid://b2l1tetlepcs0" path="res://test/drag_droppable/droppable_timeline.gd" id="2_x7a2j"]
 [ext_resource type="Texture2D" uid="uid://i0as5ify5rt6" path="res://assets/lockpick/pinhole_locked.png" id="3_kso7h"]
+[ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://gui/window.tscn" id="4_dl0vl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1wi1"]
 
@@ -17,19 +18,26 @@ texture_margin_bottom = 2.0
 expand_margin_left = 2.0
 expand_margin_right = 2.0
 
-[node name="FormationTimeline" type="ScrollContainer" node_paths=PackedStringArray("timeline")]
-z_index = -1
-custom_minimum_size = Vector2(0, 100)
+[node name="FormationTimeline" type="Control" node_paths=PackedStringArray("timeline")]
+layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -294.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_6jie6")
-timeline = NodePath("Timeline")
+timeline = NodePath("Window/MarginContainer/ScrollContainer/Timeline")
 
-[node name="Timeline" type="ColorRect" parent="." node_paths=PackedStringArray("holder", "playback_cursor")]
+[node name="Window" parent="." instance=ExtResource("4_dl0vl")]
+layout_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/MarginContainer" index="0"]
+z_index = 1
+layout_mode = 2
+
+[node name="Timeline" type="ColorRect" parent="Window/MarginContainer/ScrollContainer" node_paths=PackedStringArray("holder", "playback_cursor")]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -39,7 +47,7 @@ script = ExtResource("2_x7a2j")
 holder = NodePath("FormationHolder")
 playback_cursor = NodePath("PlaybackCursor")
 
-[node name="PlaybackCursor" type="HScrollBar" parent="Timeline"]
+[node name="PlaybackCursor" type="HScrollBar" parent="Window/MarginContainer/ScrollContainer/Timeline"]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -55,7 +63,7 @@ theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_p1wi1")
 theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_p1wi1")
 value = 20.0
 
-[node name="FormationHolder" type="Control" parent="Timeline"]
+[node name="FormationHolder" type="Control" parent="Window/MarginContainer/ScrollContainer/Timeline"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,5 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[connection signal="data_updated" from="Timeline" to="." method="_on_color_rect_2_data_updated"]
-[connection signal="value_changed" from="Timeline/PlaybackCursor" to="." method="_on_h_scroll_bar_value_changed"]
+[connection signal="data_updated" from="Window/MarginContainer/ScrollContainer/Timeline" to="." method="_on_color_rect_2_data_updated"]
+[connection signal="value_changed" from="Window/MarginContainer/ScrollContainer/Timeline/PlaybackCursor" to="." method="_on_h_scroll_bar_value_changed"]
+
+[editable path="Window"]

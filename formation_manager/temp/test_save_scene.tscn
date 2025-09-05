@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7q84brnnhmk5"]
-
-[ext_resource type="Script" uid="uid://cltbi0ckjggcu" path="res://07-30_08-05 dance formation app/formation_manager/temp/test_save_scene.gd" id="1_d1pwh"]
-
-[node name="TestSaveScene" type="Node2D"]
-script = ExtResource("1_d1pwh")

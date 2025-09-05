@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ligh7w1gyua6"]
 
-[ext_resource type="Script" uid="uid://c8mtw212ym66x" path="res://07-30_08-05 dance formation app/formation_manager/formation_button.gd" id="1_cijrj"]
+[ext_resource type="Script" uid="uid://c8mtw212ym66x" path="res://formation_display/formation_button.gd" id="1_cijrj"]
 
 [node name="FormationButton" type="Button"]
 custom_minimum_size = Vector2(60, 60)

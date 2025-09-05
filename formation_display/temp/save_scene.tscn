@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bicugqjwlbmxk"]
 
-[ext_resource type="Script" uid="uid://bfloxis3r0iw1" path="res://07-30_08-05 dance formation app/formation_manager/temp/save_scene.gd" id="1_nkeii"]
-[ext_resource type="Script" uid="uid://cygmrujp7rvlf" path="res://07-30_08-05 dance formation app/formation_manager/temp/test_res.gd" id="2_ryswa"]
+[ext_resource type="Script" uid="uid://bfloxis3r0iw1" path="res://formation_display/temp/save_scene.gd" id="1_nkeii"]
+[ext_resource type="Script" uid="uid://cygmrujp7rvlf" path="res://formation_display/temp/test_res.gd" id="2_ryswa"]
 
 [sub_resource type="Resource" id="Resource_s6rqi"]
 script = ExtResource("2_ryswa")

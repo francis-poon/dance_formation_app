@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://qnsgspdvojs3"]
 
-[ext_resource type="Script" uid="uid://b20ebpitdtu1y" path="res://07-30_08-05 dance formation app/formation_manager/formation_preview.gd" id="1_xn03b"]
+[ext_resource type="Script" uid="uid://b20ebpitdtu1y" path="res://formation_display/formation_preview.gd" id="1_xn03b"]
 
 [node name="FormationPreview" type="Control"]
 layout_mode = 3
