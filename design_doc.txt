@@ -13,3 +13,21 @@ has dancers
 
 should i have some kind of singleton that holds all the of the formations and can be referenced using
 id? 
+
+formation emits a signal eveery time its changed, signal carries an array of positions
+position array index correlates with dancer id
+every formation dancers will have an id that's incremental
+formation previews will be linked to this signal and update its preview whenever this signal is sent
+	current_dancers = preview.get_children()
+	for dancer_idx in range(formation_signal.size):
+		if dancer_idx < current_dancers.size():
+			current_dancers[dancer_idx].position = formation_signal[dancer_idx]
+		else:
+			var new_dancer.position = formation_signal[dancer_idx]
+
+timeline will have timeline objects. timeline objects can be drag and dropped into the timeline.
+formation_preview timeline object will inherit timeline object in order to emit the display formation signal
+
+okay so what shouold i work on first? it feels like i should probably rework the formation scene so that it
+can handle sending out the preview data signal. its get_preview func will also connect the preview to its
+update signal before returning the preview

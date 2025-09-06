@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cupq47pd41vdx"]
 
-[ext_resource type="Script" uid="uid://c16nfe2w0kub4" path="res://formation_display/temp/test_packed_scene.gd" id="1_jp468"]
-[ext_resource type="Script" uid="uid://bbkbxhqcm125t" path="res://formation_display/temp/res_container.gd" id="2_pehq0"]
+[ext_resource type="Script" uid="uid://c16nfe2w0kub4" path="res://test/temp/test_packed_scene.gd" id="1_jp468"]
+[ext_resource type="Script" uid="uid://bbkbxhqcm125t" path="res://test/temp/res_container.gd" id="2_pehq0"]
 
 [node name="TestPackedScene" type="Node2D" node_paths=PackedStringArray("res_container")]
 script = ExtResource("1_jp468")
