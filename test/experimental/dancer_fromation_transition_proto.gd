@@ -1,8 +1,16 @@
 extends Node
 
-
-
 # Experimental code for transitioning dancer between formations
+
+#var is_move: bool
+#var cur_move_time: float
+#var move_time: float = 2
+#var targets: Array
+
+#func _ready():
+	#cur_move_time = 0
+	#is_move = false
+	#targets = []
 
 #func _process(delta: float) -> void:
 	#if is_move:

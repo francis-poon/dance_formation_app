@@ -1,13 +1,23 @@
 class_name DanceFormationPreview
 extends Control
 
-var preview: Control
-var id: int
+@export var dancer_sprite: Sprite2D
+@export var stage: ColorRect
 
-func set_preview(p_id: int, p_preview: Control):
-	if preview:
-		remove_child(preview)
-	
+var id: int
+var dancers: Array[Sprite2D]
+
+func set_preview(p_id: int, dancer_positions: Array[Vector2]):
 	id = p_id
-	preview = p_preview
-	add_child(preview)
+	
+	if dancers.size() < dancer_positions.size():
+		var old_size: int = dancers.size()
+		dancers.resize(dancer_positions.size())
+	for i in range(dancer_positions.size()):
+		if not dancers[i]:
+			dancers[i] = dancer_sprite.duplicate()
+			stage.add_child(dancers[i])
+		dancers[i].position = dancer_positions[i]
+
+func _on_formation_changed(dancer_positions: Array[Vector2]):
+	pass
