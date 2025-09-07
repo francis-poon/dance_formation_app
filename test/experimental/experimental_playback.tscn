@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bofs2pvi3dxg3"]
 
-[ext_resource type="Script" uid="uid://bn3lbet1u3ty5" path="res://07-30_08-05 dance formation app/experimental/experimental_playback.gd" id="1_j1pfu"]
-[ext_resource type="PackedScene" uid="uid://bfdfc7bs14n35" path="res://07-30_08-05 dance formation app/dancer_manager/dancer.tscn" id="2_i3jjh"]
+[ext_resource type="Script" uid="uid://bn3lbet1u3ty5" path="res://test/experimental/experimental_playback.gd" id="1_j1pfu"]
+[ext_resource type="PackedScene" uid="uid://bfdfc7bs14n35" path="res://dancer_manager/dancer.tscn" id="2_i3jjh"]
 [ext_resource type="Texture2D" uid="uid://cw1ha3c6dffj" path="res://assets/blacknwhite/target.png" id="3_yfeaq"]
-[ext_resource type="Script" uid="uid://dndjfnya376v6" path="res://07-30_08-05 dance formation app/experimental/h_slider.gd" id="4_gqypq"]
+[ext_resource type="Script" uid="uid://dndjfnya376v6" path="res://test/experimental/h_slider.gd" id="4_gqypq"]
 
 [node name="main" type="Node2D" node_paths=PackedStringArray("dancer_containers")]
 script = ExtResource("1_j1pfu")

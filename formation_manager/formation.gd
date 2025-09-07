@@ -30,27 +30,17 @@ func load_data(p_data: DanceFormationData):
 
 func add_dancer(pos: Vector2):
 	var new_dancer: Dancer = dancer_scene.instantiate()
+	new_dancer.id = stage.get_children().size()
 	stage.add_child(new_dancer)
 	new_dancer.global_position = pos
 	new_dancer.dancer_moved.connect(_on_dancer_moved)
 	new_dancer.dancer_deleted.connect(_on_dancer_deleted)
+	data.dancer_positions.append(new_dancer.position)
 	formation_changed.emit(data.dancer_positions)
 
 func get_preview() -> Control:
 	var preview: DanceFormationPreview = DanceFormationPreview.new()
-	var preview_stage: Control = stage.duplicate()
-	var stage_dancers = preview_stage.get_children()
-	for dancer in stage_dancers:
-		preview_stage.remove_child(dancer)
-		dancer = dancer as Dancer
-		var dancer_sprite = dancer.get_sprite()
-		preview_stage.add_child(dancer_sprite)
-		dancer_sprite.position = dancer.position
-	
-	preview.set_preview(data.id, preview_stage)
-	preview_stage.position = -0.5 * preview_stage.get_rect().size
-	preview.scale = Vector2(0.25, 0.25)
-	preview.modulate = _preview_modulation
+	preview.set_preview(data.id, data.dancer_positions, stage.size)
 	formation_changed.connect(preview._on_formation_changed)
 	return preview
 

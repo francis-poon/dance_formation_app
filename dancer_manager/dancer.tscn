@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfdfc7bs14n35"]
 
-[ext_resource type="Texture2D" uid="uid://i8pkolgal7j1" path="res://assets/blacknwhite/peach.png" id="1_hatbp"]
 [ext_resource type="Script" uid="uid://b1up6kx4kvukg" path="res://dancer_manager/dancer.gd" id="1_telqb"]
+[ext_resource type="Texture2D" uid="uid://dbk0y2wmmhmet" path="res://assets/icons/dancer_icon.png" id="2_8r7sk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_telqb"]
-size = Vector2(34, 42)
+size = Vector2(30, 30)
 
 [node name="Dancer" type="Area2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_telqb")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_hatbp")
+texture = ExtResource("2_8r7sk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_telqb")

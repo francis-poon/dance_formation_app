@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://br5npltmys78s"]
 
-[ext_resource type="Script" uid="uid://y0210j38bpue" path="res://07-30_08-05 dance formation app/dancer_manager/dancer_manager.gd" id="1_a856p"]
-[ext_resource type="PackedScene" uid="uid://f881xvvr4vq7" path="res://07-30_08-05 dance formation app/dancer_manager/dancer_button.tscn" id="2_cg22b"]
+[ext_resource type="Script" uid="uid://y0210j38bpue" path="res://dancer_manager/dancer_manager.gd" id="1_a856p"]
+[ext_resource type="PackedScene" uid="uid://f881xvvr4vq7" path="res://dancer_manager/dancer_button.tscn" id="2_cg22b"]
 
 [node name="DancerManager" type="Control" node_paths=PackedStringArray("dancer_select_panel")]
 custom_minimum_size = Vector2(40, 0)

@@ -11,7 +11,6 @@ config_version=5
 [application]
 
 config/name="dance_formation_app"
-run/main_scene="uid://00ekigx16v67"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,11 +19,6 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
-
-[global_group]
-
-player=""
-"gundam enemy"=""
 
 [input]
 

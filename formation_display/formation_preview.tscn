@@ -1,16 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://qnsgspdvojs3"]
+[gd_scene load_steps=3 format=3 uid="uid://qnsgspdvojs3"]
 
 [ext_resource type="Script" uid="uid://b20ebpitdtu1y" path="res://formation_display/formation_preview.gd" id="1_xn03b"]
+[ext_resource type="Texture2D" uid="uid://dbk0y2wmmhmet" path="res://assets/icons/dancer_icon.png" id="2_i8a10"]
 
 [node name="FormationPreview" type="Control" node_paths=PackedStringArray("dancer_sprite", "stage")]
-custom_minimum_size = Vector2(978, 633)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 10.0
+offset_bottom = 10.0
 script = ExtResource("1_xn03b")
 dancer_sprite = NodePath("Sprite2D")
 stage = NodePath("Stage")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_i8a10")
 
 [node name="Stage" type="ColorRect" parent="."]
 layout_mode = 1

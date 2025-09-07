@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://f881xvvr4vq7"]
 
 [ext_resource type="Texture2D" uid="uid://i8pkolgal7j1" path="res://assets/blacknwhite/peach.png" id="1_q2uhf"]
-[ext_resource type="Script" uid="uid://dkmtvfeaijjxg" path="res://07-30_08-05 dance formation app/dancer_manager/dancer_button.gd" id="1_qxl0r"]
+[ext_resource type="Script" uid="uid://dkmtvfeaijjxg" path="res://dancer_manager/dancer_button.gd" id="1_qxl0r"]
 
 [node name="DancerButton" type="Control" node_paths=PackedStringArray("dancer_drop_marker")]
 layout_mode = 3
