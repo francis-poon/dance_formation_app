@@ -4,7 +4,6 @@ extends Area2D
 signal dancer_moved(dancer_id: int, position: Vector2)
 signal dancer_deleted(dancer_id: int)
 
-@export var slider: HSlider
 @export var sprite: Sprite2D
 
 var id: int

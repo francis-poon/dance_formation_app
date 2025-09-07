@@ -15,8 +15,8 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_8uro3")
 dancer_scene = ExtResource("2_esxfy")
-stage = NodePath("Stage")
 _preview_modulation = Color(0.258824, 0.286275, 0.45098, 0.870588)
+stage = NodePath("Stage")
 
 [node name="Stage" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(500, 300)
