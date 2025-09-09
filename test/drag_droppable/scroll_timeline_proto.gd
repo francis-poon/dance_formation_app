@@ -1,5 +1,5 @@
 class_name FormationTimeline
-extends ScrollContainer
+extends Control
 
 signal display_formation(id: int)
 

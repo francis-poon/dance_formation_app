@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://di0qr31j0do0p"]
+[gd_scene load_steps=9 format=3 uid="uid://di0qr31j0do0p"]
 
 [ext_resource type="Script" uid="uid://cd3vk1dem6b7w" path="res://formation_display/formation_display.gd" id="1_so8fq"]
 [ext_resource type="PackedScene" uid="uid://ikxgpnldqm7k" path="res://formation_manager/formation_manager.tscn" id="2_pfslo"]
 [ext_resource type="PackedScene" uid="uid://kmep7jy02ke" path="res://formation_manager/formation.tscn" id="3_1kfqa"]
+[ext_resource type="Theme" uid="uid://05lc6pvo2kao" path="res://resources/themes/box_separator.tres" id="4_06e48"]
 [ext_resource type="Script" uid="uid://wa5map4faf3f" path="res://formation_display/formation_editor.gd" id="4_heqxf"]
+[ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://gui/window.tscn" id="5_elco4"]
 [ext_resource type="Script" uid="uid://b78fvxeytnmpc" path="res://formation_display/formation_selector.gd" id="5_fnc6h"]
 [ext_resource type="PackedScene" uid="uid://ligh7w1gyua6" path="res://formation_display/formation_button.tscn" id="6_i41fn"]
 
@@ -17,54 +19,60 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_so8fq")
 manager = NodePath("FormationManager")
-selector = NodePath("FormationSelector")
-editor = NodePath("VBoxContainer/FormationEditor")
+selector = NodePath("HBoxContainer/SelectorWindow/MarginContainer/FormationSelector")
+editor = NodePath("HBoxContainer/EditorWindow/MarginContainer/FormationEditor")
 
 [node name="FormationManager" parent="." instance=ExtResource("2_pfslo")]
 formation_scene = ExtResource("3_1kfqa")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_06e48")
 
-[node name="FormationEditor" type="Control" parent="VBoxContainer"]
+[node name="EditorWindow" parent="HBoxContainer" instance=ExtResource("5_elco4")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FormationEditor" type="Control" parent="HBoxContainer/EditorWindow/MarginContainer" index="1"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("4_heqxf")
 
-[node name="FormationSelector" type="ScrollContainer" parent="." node_paths=PackedStringArray("formation_container")]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="SelectorWindow" parent="HBoxContainer" instance=ExtResource("5_elco4")]
+custom_minimum_size = Vector2(252, 0)
+layout_mode = 2
+
+[node name="FormationSelector" type="ScrollContainer" parent="HBoxContainer/SelectorWindow/MarginContainer" index="1" node_paths=PackedStringArray("formation_container")]
+layout_mode = 2
 horizontal_scroll_mode = 0
 script = ExtResource("5_fnc6h")
 formation_button_scene = ExtResource("6_i41fn")
 formation_container = NodePath("VBoxContainer/VBoxContainer")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FormationSelector"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/SelectorWindow/MarginContainer/FormationSelector"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FormationSelector/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/SelectorWindow/MarginContainer/FormationSelector/VBoxContainer"]
 layout_mode = 2
 
-[node name="AddFormationButton" type="Button" parent="FormationSelector/VBoxContainer"]
+[node name="AddFormationButton" type="Button" parent="HBoxContainer/SelectorWindow/MarginContainer/FormationSelector/VBoxContainer"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "+"
 
-[connection signal="new_formation_request" from="FormationSelector" to="." method="_on_new_formation_request"]
-[connection signal="select_formation" from="FormationSelector" to="." method="_on_select_formation"]
-[connection signal="pressed" from="FormationSelector/VBoxContainer/AddFormationButton" to="FormationSelector" method="_on_add_formation_button_pressed"]
+[connection signal="new_formation_request" from="HBoxContainer/SelectorWindow/MarginContainer/FormationSelector" to="." method="_on_new_formation_request"]
+[connection signal="select_formation" from="HBoxContainer/SelectorWindow/MarginContainer/FormationSelector" to="." method="_on_select_formation"]
+[connection signal="pressed" from="HBoxContainer/SelectorWindow/MarginContainer/FormationSelector/VBoxContainer/AddFormationButton" to="HBoxContainer/SelectorWindow/MarginContainer/FormationSelector" method="_on_add_formation_button_pressed"]
+
+[editable path="HBoxContainer/EditorWindow"]
+[editable path="HBoxContainer/SelectorWindow"]

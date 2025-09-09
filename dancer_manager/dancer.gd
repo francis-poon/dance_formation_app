@@ -19,7 +19,6 @@ func _ready():
 	is_mouse_in = false
 
 func _input(event: InputEvent) -> void:
-	# TODO: Emit dancer_moved signal when dancer is dragged
 	if event is InputEventMouseMotion and is_pressed:
 		global_position = event.global_position
 	if event is InputEventMouseButton and is_mouse_in:
