@@ -11,7 +11,7 @@ func _ready() -> void:
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT \
 	 and event.is_pressed() and current_formation:
-		current_formation.add_dancer(event.position)
+		current_formation.add_dancer(event.global_position)
 
 func set_formation(formation: DanceFormation):
 	if current_formation:

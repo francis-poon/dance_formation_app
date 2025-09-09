@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ligh7w1gyua6"]
+[gd_scene load_steps=3 format=3 uid="uid://ligh7w1gyua6"]
 
 [ext_resource type="Script" uid="uid://c8mtw212ym66x" path="res://formation_display/formation_button.gd" id="1_cijrj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ff0v"]
 
 [node name="FormationButton" type="Control" node_paths=PackedStringArray("_preview_holder")]
 custom_minimum_size = Vector2(0, 60)
@@ -27,5 +29,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6ff0v")
 
 [connection signal="pressed" from="FormationButton" to="." method="_on_pressed"]

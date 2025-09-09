@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgoaa7vcfvsd2"]
 
 [ext_resource type="Script" uid="uid://bwawx1ylv3ejt" path="res://test/drag_droppable/scroll_timeline_proto.gd" id="1_6jie6"]
-[ext_resource type="Script" uid="uid://b2l1tetlepcs0" path="res://test/drag_droppable/droppable_timeline.gd" id="2_x7a2j"]
+[ext_resource type="Script" uid="uid://b2l1tetlepcs0" path="res://formation_timeline/droppable_timeline.gd" id="2_x7a2j"]
 [ext_resource type="Texture2D" uid="uid://i0as5ify5rt6" path="res://assets/lockpick/pinhole_locked.png" id="3_kso7h"]
 [ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://gui/window.tscn" id="4_dl0vl"]
 
@@ -33,7 +33,7 @@ timeline = NodePath("Window/MarginContainer/ScrollContainer/Timeline")
 [node name="Window" parent="." instance=ExtResource("4_dl0vl")]
 layout_mode = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Window/MarginContainer" index="0"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/MarginContainer" index="1"]
 z_index = 1
 layout_mode = 2
 

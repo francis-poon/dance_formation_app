@@ -24,11 +24,14 @@ func _on_pressed() -> void:
 		select_formation.emit(-1)
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
-	var drag_data = _get_preview()
-	drag_data.scale = Vector2(0.2, 0.2)
-	set_drag_preview(drag_data)
-	#formation.duplicate()
-	return _get_preview()
+	set_drag_preview(_get_preview())
+	
+	var drag_data: FormationTimelineObject = FormationTimelineObject.new()
+	drag_data.set_data(formation.data.id, formation.get_preview())
+	
+	return drag_data
 
 func _get_preview() -> Control:
-	return formation.get_preview()
+	var preview = formation.get_preview()
+	preview.scale = Vector2(0.2, 0.2)
+	return preview

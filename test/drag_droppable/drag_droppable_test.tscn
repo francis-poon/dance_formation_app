@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cq7bavf2ce35f" path="res://assets/blacknwhite/strawberry.png" id="4_5hf2c"]
 [ext_resource type="Texture2D" uid="uid://b3x3mn7wggntl" path="res://assets/blacknwhite/blueberry.png" id="5_h7c6y"]
 [ext_resource type="Script" uid="uid://bwawx1ylv3ejt" path="res://test/drag_droppable/scroll_timeline_proto.gd" id="6_gwfuy"]
-[ext_resource type="Script" uid="uid://b2l1tetlepcs0" path="res://test/drag_droppable/droppable_timeline.gd" id="7_gwfuy"]
 [ext_resource type="Texture2D" uid="uid://i0as5ify5rt6" path="res://assets/lockpick/pinhole_locked.png" id="7_p1wi1"]
+[ext_resource type="Script" uid="uid://c0ikrr4m7jrlv" path="res://test/drag_droppable/droppable_timeline.gd" id="8_h7c6y"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1wi1"]
 
@@ -109,7 +109,7 @@ texture = ExtResource("2_dy366")
 script = ExtResource("2_k8cos")
 data = "Strawberry"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer" node_paths=PackedStringArray("timeline_scroll", "timeline", "label")]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer" node_paths=PackedStringArray("timeline")]
 z_index = -1
 custom_minimum_size = Vector2(0, 100)
 anchors_preset = 12
@@ -119,18 +119,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("6_gwfuy")
-timeline_scroll = NodePath("ColorRect2/HScrollBar")
 timeline = NodePath("ColorRect2")
-label = NodePath("../Label")
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/ScrollContainer" node_paths=PackedStringArray("holder")]
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/ScrollContainer"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 color = Color(0, 0, 0, 1)
-script = ExtResource("7_gwfuy")
-holder = NodePath("Control")
+script = ExtResource("8_h7c6y")
 
 [node name="HScrollBar" type="HScrollBar" parent="CanvasLayer/ScrollContainer/ColorRect2"]
 z_index = 2

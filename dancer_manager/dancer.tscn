@@ -7,10 +7,12 @@
 size = Vector2(30, 30)
 
 [node name="Dancer" type="Area2D" node_paths=PackedStringArray("sprite")]
+texture_filter = 1
 script = ExtResource("1_telqb")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_8r7sk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
