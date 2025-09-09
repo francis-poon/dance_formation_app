@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://b78fvxeytnmpc" path="res://formation_display/formation_selector.gd" id="5_fnc6h"]
 [ext_resource type="PackedScene" uid="uid://ligh7w1gyua6" path="res://formation_display/formation_button.tscn" id="6_i41fn"]
 
-[node name="FormationDisplay" type="Control" node_paths=PackedStringArray("manager", "selector", "editor", "preview")]
+[node name="FormationDisplay" type="Control" node_paths=PackedStringArray("manager", "selector", "editor")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +19,6 @@ script = ExtResource("1_so8fq")
 manager = NodePath("FormationManager")
 selector = NodePath("FormationSelector")
 editor = NodePath("VBoxContainer/FormationEditor")
-preview = NodePath("VBoxContainer/PreviewDisplayer")
 
 [node name="FormationManager" parent="." instance=ExtResource("2_pfslo")]
 formation_scene = ExtResource("3_1kfqa")
@@ -37,10 +36,6 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("4_heqxf")
-
-[node name="PreviewDisplayer" type="Control" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="FormationSelector" type="ScrollContainer" parent="." node_paths=PackedStringArray("formation_container")]
 layout_mode = 1

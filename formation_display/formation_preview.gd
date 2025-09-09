@@ -1,17 +1,19 @@
 class_name DanceFormationPreview
 extends Control
 
-@export var dancer_sprite: Sprite2D = Sprite2D.new()
-@export var stage: ColorRect = ColorRect.new()
+@export var dancer_sprite: Sprite2D
+@export var dancer_holder: Control
 
 var id: int
 var dancers: Array[Sprite2D]
+var target_size: Vector2
 
 func _ready():
 	dancers = []
 
 func set_preview(p_id: int, dancer_positions: Array[Vector2], preview_size: Vector2):
 	size = preview_size
+	target_size = preview_size
 	id = p_id
 	_update_dancers(dancer_positions)
 
@@ -25,8 +27,12 @@ func _update_dancers(dancer_positions: Array[Vector2]):
 		if not dancers[i]:
 			dancers[i] = dancer_sprite.duplicate()
 			dancers[i].show()
-			stage.add_child(dancers[i])
+			dancer_holder.add_child(dancers[i])
 		dancers[i].position = dancer_positions[i]
 
 func _on_formation_changed(dancer_positions: Array[Vector2]):
 	_update_dancers(dancer_positions)
+
+
+func _on_resized() -> void:
+	dancer_holder.scale = size / target_size

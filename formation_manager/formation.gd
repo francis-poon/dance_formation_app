@@ -11,6 +11,7 @@ signal formation_changed(dancer_positions: Array[Vector2])
 	#set(value):
 		#stage_size = value
 		#stage.size = stage_size
+@export var _preview_scene: PackedScene
 @export var _preview_modulation: Color
 
 func get_data():
@@ -39,7 +40,7 @@ func add_dancer(pos: Vector2):
 	formation_changed.emit(data.dancer_positions)
 
 func get_preview() -> Control:
-	var preview: DanceFormationPreview = DanceFormationPreview.new()
+	var preview: DanceFormationPreview = _preview_scene.instantiate()
 	preview.set_preview(data.id, data.dancer_positions, stage.size)
 	formation_changed.connect(preview._on_formation_changed)
 	return preview

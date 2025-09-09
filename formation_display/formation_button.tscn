@@ -2,11 +2,30 @@
 
 [ext_resource type="Script" uid="uid://c8mtw212ym66x" path="res://formation_display/formation_button.gd" id="1_cijrj"]
 
-[node name="FormationButton" type="Button"]
-custom_minimum_size = Vector2(60, 60)
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="FormationButton" type="Control" node_paths=PackedStringArray("_preview_holder")]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 60.0
 script = ExtResource("1_cijrj")
-_preview_modulation = Color(0.257853, 0.285909, 0.452684, 0.870588)
+_preview_holder = NodePath("AspectRatioContainer")
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FormationButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[connection signal="pressed" from="FormationButton" to="." method="_on_pressed"]

@@ -9,7 +9,11 @@ signal dancer_deleted(dancer_id: int)
 var id: int
 
 var is_mouse_in: bool
-var is_pressed: bool
+var is_pressed: bool:
+	set(value):
+		is_pressed = value
+		if not is_pressed:
+			dancer_moved.emit(id, position)
 
 func _ready():
 	is_mouse_in = false

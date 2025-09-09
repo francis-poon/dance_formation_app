@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://kmep7jy02ke"]
+[gd_scene load_steps=4 format=3 uid="uid://kmep7jy02ke"]
 
 [ext_resource type="Script" uid="uid://bsbnpi8etygsd" path="res://formation_manager/formation.gd" id="1_8uro3"]
 [ext_resource type="PackedScene" uid="uid://bfdfc7bs14n35" path="res://dancer_manager/dancer.tscn" id="2_esxfy"]
+[ext_resource type="PackedScene" uid="uid://qnsgspdvojs3" path="res://formation_display/formation_preview.tscn" id="3_qqrjh"]
 
 [node name="Formation" type="Control" node_paths=PackedStringArray("stage")]
 layout_mode = 3
@@ -15,8 +16,9 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_8uro3")
 dancer_scene = ExtResource("2_esxfy")
-_preview_modulation = Color(0.258824, 0.286275, 0.45098, 0.870588)
 stage = NodePath("Stage")
+_preview_scene = ExtResource("3_qqrjh")
+_preview_modulation = Color(0.258824, 0.286275, 0.45098, 0.870588)
 
 [node name="Stage" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(500, 300)

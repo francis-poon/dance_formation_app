@@ -3,14 +3,12 @@
 [ext_resource type="Script" uid="uid://b20ebpitdtu1y" path="res://formation_display/formation_preview.gd" id="1_xn03b"]
 [ext_resource type="Texture2D" uid="uid://dbk0y2wmmhmet" path="res://assets/icons/dancer_icon.png" id="2_i8a10"]
 
-[node name="FormationPreview" type="Control" node_paths=PackedStringArray("dancer_sprite", "stage")]
+[node name="FormationPreview" type="Control" node_paths=PackedStringArray("dancer_sprite", "dancer_holder")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 10.0
-offset_bottom = 10.0
 script = ExtResource("1_xn03b")
 dancer_sprite = NodePath("Sprite2D")
-stage = NodePath("Stage")
+dancer_holder = NodePath("DancerHolder")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -24,3 +22,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.223529, 0.231373, 0.278431, 1)
+
+[node name="DancerHolder" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="resized" from="." to="." method="_on_resized"]
