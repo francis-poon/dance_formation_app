@@ -4,12 +4,12 @@ extends Control
 @export var dancer_sprite: Sprite2D
 @export var dancer_holder: Control
 
-var id: int
-var dancers: Array[Sprite2D]
-var target_size: Vector2
+@export var id: int
+@export var dancers: Array[Sprite2D]
+@export var target_size: Vector2
 
-func _ready():
-	dancers = []
+#func _ready():
+	#dancers = []
 
 func set_preview(p_id: int, dancer_positions: Array[Vector2], preview_size: Vector2):
 	size = preview_size

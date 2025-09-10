@@ -6,6 +6,7 @@
 [node name="FormationPreview" type="Control" node_paths=PackedStringArray("dancer_sprite", "dancer_holder")]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 1
 script = ExtResource("1_xn03b")
 dancer_sprite = NodePath("Sprite2D")
 dancer_holder = NodePath("DancerHolder")
@@ -21,11 +22,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0.223529, 0.231373, 0.278431, 1)
 
 [node name="DancerHolder" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [connection signal="resized" from="." to="." method="_on_resized"]

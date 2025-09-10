@@ -6,7 +6,7 @@ var formation_preview: DanceFormationPreview:
 	set(value):
 		if formation_preview:
 			formation_preview.queue_free()
-		formation_preview = value
+		formation_preview = value.duplicate(DUPLICATE_SIGNALS + DUPLICATE_GROUPS + DUPLICATE_SCRIPTS)
 		add_child(formation_preview)
 
 func set_data(p_formation_id: int, p_formation_preview: DanceFormationPreview):
@@ -19,4 +19,6 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	return self
 
 func _get_preview() -> Control:
-	return formation_preview
+	var preview = formation_preview.duplicate(DUPLICATE_SIGNALS + DUPLICATE_GROUPS + DUPLICATE_SCRIPTS)
+	preview.scale = Vector2(0.2, 0.2)
+	return preview
