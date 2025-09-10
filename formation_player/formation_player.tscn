@@ -46,3 +46,5 @@ size_flags_vertical = 3
 
 [node name="FormationTimeline" parent="MarginContainer/VBoxContainer2" instance=ExtResource("2_fmsq7")]
 layout_mode = 2
+
+[connection signal="display_formation" from="MarginContainer/VBoxContainer2/FormationTimeline" to="." method="_on_formation_timeline_display_formation"]
