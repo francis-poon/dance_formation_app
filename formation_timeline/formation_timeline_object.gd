@@ -6,7 +6,8 @@ var formation_preview: DanceFormationPreview:
 	set(value):
 		if formation_preview:
 			formation_preview.queue_free()
-		formation_preview = value.duplicate(DUPLICATE_SIGNALS + DUPLICATE_GROUPS + DUPLICATE_SCRIPTS)
+		#formation_preview = value.duplicate(DUPLICATE_SIGNALS + DUPLICATE_GROUPS + DUPLICATE_SCRIPTS)
+		formation_preview = value
 		add_child(formation_preview)
 
 func set_data(p_formation_id: int, p_formation_preview: DanceFormationPreview):

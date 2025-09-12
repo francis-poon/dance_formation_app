@@ -39,11 +39,11 @@ z_index = 1
 layout_mode = 2
 
 [node name="Timeline" type="ColorRect" parent="Window/MarginContainer/ScrollContainer" node_paths=PackedStringArray("holder", "playback_cursor")]
-custom_minimum_size = Vector2(800, 0)
+custom_minimum_size = Vector2(2000, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 script = ExtResource("3_dl0vl")
 holder = NodePath("FormationHolder")
 playback_cursor = NodePath("PlaybackCursor")
