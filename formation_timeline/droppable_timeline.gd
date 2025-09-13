@@ -4,7 +4,7 @@ extends Control
 signal data_updated
 
 @export var holder: Node
-@export var playback_cursor: HScrollBar
+@export var playback_cursor: Control
 
 var marker_cues: Array
 

@@ -7,7 +7,7 @@ signal display_formation(id: int)
 
 var current_formation_id: int = -1
 
-func _on_h_scroll_bar_value_changed(value: float) -> void:
+func _playback_value_changed(value: float) -> void:
 	_update_formation(value)
 
 func _on_color_rect_2_data_updated() -> void:
@@ -17,6 +17,11 @@ func _update_formation(value):
 	# check if formation has changed
 	# IF formatin has changed, emit signal with new formation id 
 	# else do nothing
+	if timeline.marker_cues.size() == 0:
+		current_formation_id = -1
+		display_formation.emit(current_formation_id)
+		return
+	
 	var target_idx = timeline.marker_cues.find_custom(func(a): return value < a[0])
 	var new_id: int = -1
 	match(target_idx):

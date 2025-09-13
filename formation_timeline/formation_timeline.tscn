@@ -1,22 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgoaa7vcfvsd2"]
+[gd_scene load_steps=12 format=3 uid="uid://dgoaa7vcfvsd2"]
 
 [ext_resource type="Script" uid="uid://b0gss2afaanho" path="res://formation_timeline/formation_timeline.gd" id="1_dl0vl"]
 [ext_resource type="Script" uid="uid://c0ikrr4m7jrlv" path="res://formation_timeline/droppable_timeline.gd" id="3_dl0vl"]
-[ext_resource type="Texture2D" uid="uid://i0as5ify5rt6" path="res://assets/lockpick/pinhole_locked.png" id="3_kso7h"]
 [ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://gui/window.tscn" id="4_dl0vl"]
+[ext_resource type="Script" uid="uid://66ps4lxh77tv" path="res://formation_timeline/playback_cursor.gd" id="4_e7h3w"]
+[ext_resource type="Texture2D" uid="uid://bs27fmrixxufq" path="res://assets/gui/slider_cursor.png" id="5_nn02e"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1wi1"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dyarv"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gwfuy"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcpgu"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p1wi1"]
-texture = ExtResource("3_kso7h")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
-expand_margin_left = 2.0
-expand_margin_right = 2.0
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_rn2de"]
+color = Color(1, 0.27451, 0.184314, 1)
+grow_begin = 0.0
+grow_end = 0.0
+vertical = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3nhdy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8n7v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvg7x"]
 
 [node name="FormationTimeline" type="Control" node_paths=PackedStringArray("timeline")]
 custom_minimum_size = Vector2(0, 196)
@@ -48,8 +52,7 @@ script = ExtResource("3_dl0vl")
 holder = NodePath("FormationHolder")
 playback_cursor = NodePath("PlaybackCursor")
 
-[node name="PlaybackCursor" type="HScrollBar" parent="Window/MarginContainer/ScrollContainer/Timeline"]
-z_index = 2
+[node name="PlaybackCursor" type="Control" parent="Window/MarginContainer/ScrollContainer/Timeline" node_paths=PackedStringArray("_scroll_bar", "_slider")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,12 +60,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme_override_styles/scroll = SubResource("StyleBoxEmpty_p1wi1")
-theme_override_styles/scroll_focus = SubResource("StyleBoxEmpty_gwfuy")
-theme_override_styles/grabber = SubResource("StyleBoxTexture_p1wi1")
-theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_p1wi1")
-theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_p1wi1")
-value = 20.0
+script = ExtResource("4_e7h3w")
+_scroll_bar = NodePath("HScrollBar")
+_slider = NodePath("HSlider")
+
+[node name="HScrollBar" type="HScrollBar" parent="Window/MarginContainer/ScrollContainer/Timeline/PlaybackCursor"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/scroll = SubResource("StyleBoxEmpty_dyarv")
+theme_override_styles/scroll_focus = SubResource("StyleBoxEmpty_bcpgu")
+theme_override_styles/grabber = SubResource("StyleBoxLine_rn2de")
+step = 1.0
+value = 1.0
+custom_step = 1.0
+
+[node name="HSlider" type="HSlider" parent="Window/MarginContainer/ScrollContainer/Timeline/PlaybackCursor"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_constants/center_grabber = 1
+theme_override_constants/grabber_offset = -18
+theme_override_icons/grabber = ExtResource("5_nn02e")
+theme_override_icons/grabber_highlight = ExtResource("5_nn02e")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_3nhdy")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_q8n7v")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_pvg7x")
+value = 1.0
+tick_count = 20
+ticks_on_borders = true
 
 [node name="FormationHolder" type="Control" parent="Window/MarginContainer/ScrollContainer/Timeline"]
 layout_mode = 1
@@ -74,6 +108,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [connection signal="data_updated" from="Window/MarginContainer/ScrollContainer/Timeline" to="." method="_on_color_rect_2_data_updated"]
-[connection signal="value_changed" from="Window/MarginContainer/ScrollContainer/Timeline/PlaybackCursor" to="." method="_on_h_scroll_bar_value_changed"]
+[connection signal="value_changed" from="Window/MarginContainer/ScrollContainer/Timeline/PlaybackCursor" to="." method="_playback_value_changed"]
+[connection signal="value_changed" from="Window/MarginContainer/ScrollContainer/Timeline/PlaybackCursor/HSlider" to="Window/MarginContainer/ScrollContainer/Timeline/PlaybackCursor" method="_on_h_slider_value_changed"]
 
 [editable path="Window"]
