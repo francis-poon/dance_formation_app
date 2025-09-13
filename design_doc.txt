@@ -1,3 +1,18 @@
+a timer that sends out time updates every time there's a tick. it can be
+started and stopped. when the timeline is being dragged by the user, it
+should pause. dragging the timeline will also set the current time of the timer.
+what does the timeline need
+- set its current time
+- send signal when it starts and stops being dragged (to pause and unpause timer)
+
+what does the timer need
+- puase, play, stop, set
+- signal or group whenever its time is changed
+	- but if timeline is listening to when the timer value changes, scrolling
+	on the timeline will cause a feedback loop. the immediate solution is for
+	the timeline to stop listening to the timer when its being dragged
+
+
 need to reimpliment timeline to actually show dance formations
 right now the prototype version looks for a TestDroppable
 change this to look for a dance formation preview

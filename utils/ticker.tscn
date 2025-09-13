@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2vi46wjsoopi"]
+
+[ext_resource type="Script" uid="uid://m6p2yg4vy52n" path="res://utils/ticker.gd" id="1_i7a4e"]
+
+[node name="Ticker" type="Node"]
+script = ExtResource("1_i7a4e")

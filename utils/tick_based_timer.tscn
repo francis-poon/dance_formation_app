@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqcmtelh2tsxi"]
+
+[ext_resource type="Script" uid="uid://bwe7xmeedlrqk" path="res://utils/tick_based_timer.gd" id="1_hu1o8"]
+[ext_resource type="PackedScene" uid="uid://b2vi46wjsoopi" path="res://utils/ticker.tscn" id="2_5laku"]
+
+[node name="TickBasedTimer" type="Node" node_paths=PackedStringArray("_ticker")]
+script = ExtResource("1_hu1o8")
+_ticker = NodePath("Ticker")
+
+[node name="Ticker" parent="." instance=ExtResource("2_5laku")]
+
+[connection signal="tick" from="Ticker" to="." method="_on_tick"]
