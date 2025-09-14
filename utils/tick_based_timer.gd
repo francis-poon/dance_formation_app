@@ -2,6 +2,7 @@ class_name TickBasedTimer
 extends Node
 
 signal time_changed(time: float)
+signal timeout
 
 @export var wait_time: float = 1
 @export var ticks_per_second: float = 30:
@@ -14,8 +15,9 @@ signal time_changed(time: float)
 
 var current_time: float:
 	set(value):
-		if value > wait_time and current_time < wait_time:
+		if value >= wait_time:
 			current_time = wait_time
+			timeout.emit()
 		else:
 			current_time = value
 		_time_changed = true

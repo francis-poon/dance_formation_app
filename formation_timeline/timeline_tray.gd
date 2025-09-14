@@ -1,4 +1,4 @@
-class_name Timeline
+class_name TimelineTray
 extends Control
 
 signal data_updated

@@ -1,20 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgoaa7vcfvsd2"]
+[gd_scene load_steps=18 format=3 uid="uid://dgoaa7vcfvsd2"]
 
 [ext_resource type="Script" uid="uid://b0gss2afaanho" path="res://formation_timeline/formation_timeline.gd" id="1_dl0vl"]
-[ext_resource type="Script" uid="uid://c0ikrr4m7jrlv" path="res://formation_timeline/droppable_timeline.gd" id="3_dl0vl"]
+[ext_resource type="PackedScene" uid="uid://cqcmtelh2tsxi" path="res://utils/tick_based_timer.tscn" id="2_rn2de"]
+[ext_resource type="Script" uid="uid://c0ikrr4m7jrlv" path="res://formation_timeline/timeline_tray.gd" id="3_dl0vl"]
+[ext_resource type="Texture2D" uid="uid://dcxwjms7w43jf" path="res://assets/gui/play.png" id="3_nn02e"]
+[ext_resource type="Script" uid="uid://d1tfwewcjyehb" path="res://formation_timeline/play_pause_button.gd" id="4_bcpgu"]
 [ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://gui/window.tscn" id="4_dl0vl"]
-[ext_resource type="Script" path="res://formation_timeline/playback_cursor.gd" id="4_e7h3w"]
+[ext_resource type="Texture2D" uid="uid://b4gusatyir8dy" path="res://assets/gui/stop.png" id="4_dyarv"]
+[ext_resource type="Script" uid="uid://66ps4lxh77tv" path="res://formation_timeline/playback_cursor.gd" id="4_e7h3w"]
 [ext_resource type="Texture2D" uid="uid://bs27fmrixxufq" path="res://assets/gui/slider_cursor.png" id="5_nn02e"]
+[ext_resource type="Texture2D" uid="uid://j4p64rfsehn2" path="res://assets/gui/pause.png" id="6_3nhdy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nn02e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dyarv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcpgu"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_rn2de"]
-color = Color(1, 0.27451, 0.184314, 1)
-grow_begin = 0.0
-grow_end = 0.0
-vertical = true
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0n76m"]
+content_margin_left = 1.0
+bg_color = Color(1, 0.27451, 0.184314, 1)
+corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3nhdy"]
 
@@ -22,7 +28,7 @@ vertical = true
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvg7x"]
 
-[node name="FormationTimeline" type="Control" node_paths=PackedStringArray("timeline")]
+[node name="FormationTimeline" type="Control" node_paths=PackedStringArray("timeline_tray")]
 custom_minimum_size = Vector2(0, 196)
 layout_mode = 3
 anchors_preset = 12
@@ -33,7 +39,10 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
 script = ExtResource("1_dl0vl")
-timeline = NodePath("Window/MarginContainer/ScrollContainer/Timeline")
+timeline_tray = NodePath("Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray")
+
+[node name="TickBasedTimer" parent="." instance=ExtResource("2_rn2de")]
+ticks_per_second = 10.0
 
 [node name="Window" parent="." instance=ExtResource("4_dl0vl")]
 layout_mode = 1
@@ -42,7 +51,45 @@ layout_mode = 1
 z_index = 1
 layout_mode = 2
 
-[node name="Timeline" type="ColorRect" parent="Window/MarginContainer/ScrollContainer" node_paths=PackedStringArray("holder", "playback_cursor")]
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="PlayBackControls" type="ColorRect" parent="Window/MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+color = Color(0.709804, 0.737255, 0.796078, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PlayBackControls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="PlayPauseButton" type="Button" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PlayBackControls/HBoxContainer"]
+custom_minimum_size = Vector2(21, 21)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nn02e")
+icon = ExtResource("3_nn02e")
+icon_alignment = 1
+script = ExtResource("4_bcpgu")
+play_icon = ExtResource("3_nn02e")
+pause_icon = ExtResource("6_3nhdy")
+
+[node name="StopButton" type="Button" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PlayBackControls/HBoxContainer"]
+custom_minimum_size = Vector2(21, 21)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nn02e")
+icon = ExtResource("4_dyarv")
+icon_alignment = 1
+
+[node name="TimelineTray" type="ColorRect" parent="Window/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("holder", "playback_cursor")]
 custom_minimum_size = Vector2(2000, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -52,7 +99,7 @@ script = ExtResource("3_dl0vl")
 holder = NodePath("FormationHolder")
 playback_cursor = NodePath("PlaybackCursor")
 
-[node name="PlaybackCursor" type="Control" parent="Window/MarginContainer/ScrollContainer/Timeline" node_paths=PackedStringArray("_scroll_bar", "_slider")]
+[node name="PlaybackCursor" type="Control" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray" node_paths=PackedStringArray("_scroll_bar", "_slider")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,7 +111,7 @@ script = ExtResource("4_e7h3w")
 _scroll_bar = NodePath("HScrollBar")
 _slider = NodePath("HSlider")
 
-[node name="HScrollBar" type="HScrollBar" parent="Window/MarginContainer/ScrollContainer/Timeline/PlaybackCursor"]
+[node name="HScrollBar" type="HScrollBar" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor"]
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -75,20 +122,20 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/scroll = SubResource("StyleBoxEmpty_dyarv")
 theme_override_styles/scroll_focus = SubResource("StyleBoxEmpty_bcpgu")
-theme_override_styles/grabber = SubResource("StyleBoxLine_rn2de")
+theme_override_styles/grabber = SubResource("StyleBoxFlat_0n76m")
 step = 1.0
 value = 1.0
 custom_step = 1.0
 
-[node name="HSlider" type="HSlider" parent="Window/MarginContainer/ScrollContainer/Timeline/PlaybackCursor"]
-custom_minimum_size = Vector2(0, 40)
+[node name="HSlider" type="HSlider" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 16.0
 grow_horizontal = 2
 theme_override_constants/center_grabber = 1
-theme_override_constants/grabber_offset = -18
+theme_override_constants/grabber_offset = -13
 theme_override_icons/grabber = ExtResource("5_nn02e")
 theme_override_icons/grabber_highlight = ExtResource("5_nn02e")
 theme_override_styles/slider = SubResource("StyleBoxEmpty_3nhdy")
@@ -98,7 +145,7 @@ value = 1.0
 tick_count = 20
 ticks_on_borders = true
 
-[node name="FormationHolder" type="Control" parent="Window/MarginContainer/ScrollContainer/Timeline"]
+[node name="FormationHolder" type="Control" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,8 +154,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[connection signal="data_updated" from="Window/MarginContainer/ScrollContainer/Timeline" to="." method="_on_color_rect_2_data_updated"]
-[connection signal="value_changed" from="Window/MarginContainer/ScrollContainer/Timeline/PlaybackCursor" to="." method="_playback_value_changed"]
-[connection signal="value_changed" from="Window/MarginContainer/ScrollContainer/Timeline/PlaybackCursor/HSlider" to="Window/MarginContainer/ScrollContainer/Timeline/PlaybackCursor" method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="Window/MarginContainer/ScrollContainer/VBoxContainer/PlayBackControls/HBoxContainer/PlayPauseButton" to="Window/MarginContainer/ScrollContainer/VBoxContainer/PlayBackControls/HBoxContainer/PlayPauseButton" method="_on_pressed"]
+[connection signal="data_updated" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray" to="." method="_on_color_rect_2_data_updated"]
+[connection signal="value_changed" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor" to="." method="_playback_value_changed"]
+[connection signal="value_changed" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor/HSlider" to="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor" method="_on_h_slider_value_changed"]
 
 [editable path="Window"]

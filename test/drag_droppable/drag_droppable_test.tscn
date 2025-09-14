@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dlfx2dqnkjjfg" path="res://test/drag_droppable/draggable.gd" id="1_o102j"]
 [ext_resource type="Script" uid="uid://bsqv5yxf2bikx" path="res://test/drag_droppable/draggable_button.gd" id="1_wd5se"]
-[ext_resource type="Texture2D" uid="uid://i8pkolgal7j1" path="res://assets/blacknwhite/peach.png" id="2_dy366"]
+[ext_resource type="Texture2D" path="res://assets/blacknwhite/peach.png" id="2_dy366"]
 [ext_resource type="Script" uid="uid://0dsk2rcuxxsq" path="res://test/drag_droppable/draggable_b.gd" id="2_k8cos"]
-[ext_resource type="Texture2D" uid="uid://cq7bavf2ce35f" path="res://assets/blacknwhite/strawberry.png" id="4_5hf2c"]
-[ext_resource type="Texture2D" uid="uid://b3x3mn7wggntl" path="res://assets/blacknwhite/blueberry.png" id="5_h7c6y"]
+[ext_resource type="Texture2D" path="res://assets/blacknwhite/strawberry.png" id="4_5hf2c"]
+[ext_resource type="Texture2D" path="res://assets/blacknwhite/blueberry.png" id="5_h7c6y"]
 [ext_resource type="Script" uid="uid://bwawx1ylv3ejt" path="res://test/drag_droppable/scroll_timeline_proto.gd" id="6_gwfuy"]
-[ext_resource type="Texture2D" uid="uid://i0as5ify5rt6" path="res://assets/lockpick/pinhole_locked.png" id="7_p1wi1"]
-[ext_resource type="Script" uid="uid://c0ikrr4m7jrlv" path="res://formation_timeline/droppable_timeline.gd" id="8_h7c6y"]
+[ext_resource type="Texture2D" path="res://assets/lockpick/pinhole_locked.png" id="7_p1wi1"]
+[ext_resource type="Script" uid="uid://c0ikrr4m7jrlv" path="res://formation_timeline/timeline_tray.gd" id="8_h7c6y"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1wi1"]
 
