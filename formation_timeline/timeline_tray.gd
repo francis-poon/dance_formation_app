@@ -5,6 +5,7 @@ signal data_updated
 
 @export var holder: Node
 @export var playback_cursor: Control
+@export var minimum_pixels_per_second: int
 
 var marker_cues: Array
 
