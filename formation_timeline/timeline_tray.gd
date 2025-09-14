@@ -9,7 +9,7 @@ signal data_updated
 var marker_cues: Array
 
 func _ready():
-	playback_cursor.max_value = size.x
+	playback_cursor.max_value = 10
 	marker_cues = []
 
 func get_current_value():

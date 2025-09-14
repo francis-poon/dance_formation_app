@@ -55,4 +55,5 @@ func set_time(time: float):
 
 func _on_tick() -> void:
 	if _time_changed:
+		_time_changed = false
 		time_changed.emit(current_time)
