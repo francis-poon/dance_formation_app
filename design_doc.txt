@@ -1,3 +1,14 @@
+okay what's wrong this time. up to now i have been using the timeline size to
+equate to how long the timeline plays. but say that timeline on screen is 1000
+pixels wide and we only want 10 seconds, or even like a standard 6 minutes (360s),
+then, this would only cover a small portion of the screen.
+
+right now i need some way to convert position to time. A lot of the data i have
+now assumes that position is time. I can add a function that does the conversion
+based off of the current scale
+
+
+
 a timer that sends out time updates every time there's a tick. it can be
 started and stopped. when the timeline is being dragged by the user, it
 should pause. dragging the timeline will also set the current time of the timer.

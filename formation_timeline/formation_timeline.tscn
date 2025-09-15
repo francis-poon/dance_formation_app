@@ -36,7 +36,7 @@ corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvg7x"]
 
-[node name="FormationTimeline" type="Control" node_paths=PackedStringArray("timeline_tray", "_play_pause_button", "_tick_timer", "_time_label", "_slider")]
+[node name="FormationTimeline" type="Control" node_paths=PackedStringArray("_timeline_tray", "_play_pause_button", "_tick_timer", "_time_label", "_slider")]
 custom_minimum_size = Vector2(0, 196)
 layout_mode = 3
 anchors_preset = 12
@@ -47,7 +47,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
 script = ExtResource("1_dl0vl")
-timeline_tray = NodePath("Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray")
+_timeline_tray = NodePath("Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray")
 _play_pause_button = NodePath("Window/MarginContainer/ScrollContainer/VBoxContainer/PlayBackControls/HBoxContainer/PlayPauseButton")
 _tick_timer = NodePath("TickBasedTimer")
 _time_label = NodePath("Window/MarginContainer/ScrollContainer/VBoxContainer/PlayBackControls/HBoxContainer/PanelContainer/Label")
@@ -117,15 +117,15 @@ text = "00:00.00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimelineTray" type="ColorRect" parent="Window/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("holder", "playback_cursor")]
+[node name="TimelineTray" type="ColorRect" parent="Window/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("_holder", "_playback_cursor")]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 color = Color(0, 0, 0, 0)
 script = ExtResource("3_dl0vl")
-holder = NodePath("FormationHolder")
-playback_cursor = NodePath("PlaybackCursor")
+_holder = NodePath("FormationHolder")
+_playback_cursor = NodePath("PlaybackCursor")
 
 [node name="PlaybackCursor" type="Control" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray" node_paths=PackedStringArray("_scroll_bar", "_slider")]
 layout_mode = 1
