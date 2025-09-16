@@ -4,7 +4,6 @@ extends Control
 signal select_formation(id: int)
 
 @export var _preview_holder: AspectRatioContainer
-@export var _preview_modulation: Color
 
 var formation: DanceFormation
 

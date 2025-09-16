@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dcxwjms7w43jf" path="res://assets/gui/play.png" id="3_nn02e"]
 [ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://gui/window.tscn" id="4_dl0vl"]
 [ext_resource type="Texture2D" uid="uid://b4gusatyir8dy" path="res://assets/gui/stop.png" id="4_dyarv"]
-[ext_resource type="Script" path="res://formation_timeline/playback_cursor.gd" id="4_e7h3w"]
+[ext_resource type="Script" uid="uid://66ps4lxh77tv" path="res://formation_timeline/playback_cursor.gd" id="4_e7h3w"]
 [ext_resource type="Texture2D" uid="uid://bs27fmrixxufq" path="res://assets/gui/slider_cursor.png" id="5_nn02e"]
 [ext_resource type="Texture2D" uid="uid://j4p64rfsehn2" path="res://assets/gui/pause.png" id="6_3nhdy"]
 
@@ -36,7 +36,7 @@ corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvg7x"]
 
-[node name="FormationTimeline" type="Control" node_paths=PackedStringArray("_timeline_tray", "_play_pause_button", "_tick_timer", "_time_label", "_slider")]
+[node name="FormationTimeline" type="Control" node_paths=PackedStringArray("_timeline_tray", "_play_pause_button", "_tick_timer", "_time_label", "_playback_cursor")]
 custom_minimum_size = Vector2(0, 196)
 layout_mode = 3
 anchors_preset = 12
@@ -51,10 +51,9 @@ _timeline_tray = NodePath("Window/MarginContainer/ScrollContainer/VBoxContainer/
 _play_pause_button = NodePath("Window/MarginContainer/ScrollContainer/VBoxContainer/PlayBackControls/HBoxContainer/PlayPauseButton")
 _tick_timer = NodePath("TickBasedTimer")
 _time_label = NodePath("Window/MarginContainer/ScrollContainer/VBoxContainer/PlayBackControls/HBoxContainer/PanelContainer/Label")
-_slider = NodePath("Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor/HSlider")
+_playback_cursor = NodePath("Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor")
 
 [node name="TickBasedTimer" parent="." instance=ExtResource("2_rn2de")]
-ticks_per_second = 10.0
 
 [node name="Window" parent="." instance=ExtResource("4_dl0vl")]
 layout_mode = 1
@@ -188,6 +187,10 @@ mouse_filter = 2
 [connection signal="pressed" from="Window/MarginContainer/ScrollContainer/VBoxContainer/PlayBackControls/HBoxContainer/StopButton" to="." method="_on_stop_button_pressed"]
 [connection signal="data_updated" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray" to="." method="_on_color_rect_2_data_updated"]
 [connection signal="value_changed" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor" to="." method="_playback_value_changed"]
+[connection signal="drag_ended" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor/HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="drag_ended" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor/HSlider" to="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor" method="_on_h_slider_drag_ended"]
+[connection signal="drag_started" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor/HSlider" to="." method="_on_h_slider_drag_started"]
+[connection signal="drag_started" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor/HSlider" to="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor" method="_on_h_slider_drag_started"]
 [connection signal="value_changed" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor/HSlider" to="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor" method="_on_h_slider_value_changed"]
 
 [editable path="Window"]

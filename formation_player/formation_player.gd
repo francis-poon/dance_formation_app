@@ -4,7 +4,6 @@ extends Control
 
 
 func _on_formation_timeline_display_formation(id: int) -> void:
-	print(id)
 	if id == -1:
 		formation_display.clear_display()
 	else:

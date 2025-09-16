@@ -9,15 +9,19 @@ signal display_formation(id: int)
 @export var _play_pause_button: Button
 @export var _tick_timer: TickBasedTimer
 @export var _time_label: Label
-@export var _slider: HSlider
+@export var _playback_cursor: PlaybackCursor
 
 var current_formation_id: int = -1
+var _is_playing_before_drag: bool
 
 func _ready():
+	_is_playing_before_drag = false
 	_timeline_tray.timeline_duration = wait_time
 	_tick_timer.wait_time = wait_time
 
 func _playback_value_changed(value: float) -> void:
+	if _playback_cursor.is_dragging:
+		_tick_timer.set_time(value)
 	_update_formation(value)
 
 func _on_color_rect_2_data_updated() -> void:
@@ -62,7 +66,24 @@ func _on_tick_based_timer_time_changed(time: float) -> void:
 	var minutes = int(time/60)
 	var seconds = time - minutes
 	_time_label.text = "%02d:%05.02f" % [minutes, seconds]
-	_slider.value = time
+	
+	if not _playback_cursor.is_dragging:
+		_playback_cursor.set_value(time)
 
 func _on_tick_based_timer_timeout() -> void:
 	_play_pause_button.set_pressed_no_signal(false)
+
+# There are two things that will be controlling time, the timer and playback cursor
+# They are both connected, when the timer is running, the cursor is moved by it
+# when the cursor is modified, the timer should reflect that.
+
+# Right now, when the timer time changes, the slider gets modified
+
+
+func _on_h_slider_drag_ended(value_changed: bool) -> void:
+	if _is_playing_before_drag:
+		_tick_timer.start()
+
+func _on_h_slider_drag_started() -> void:
+	_is_playing_before_drag = _tick_timer._is_running
+	_tick_timer.stop()
