@@ -52,6 +52,7 @@ func _update_formation(value):
 
 func _on_play_pause_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
+		display_formation.emit(current_formation_id)
 		_tick_timer.start()
 	else:
 		_tick_timer.stop()
@@ -80,7 +81,7 @@ func _on_tick_based_timer_timeout() -> void:
 # Right now, when the timer time changes, the slider gets modified
 
 
-func _on_h_slider_drag_ended(value_changed: bool) -> void:
+func _on_h_slider_drag_ended(_value_changed: bool) -> void:
 	if _is_playing_before_drag:
 		_tick_timer.start()
 

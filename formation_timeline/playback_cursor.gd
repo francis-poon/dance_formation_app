@@ -29,7 +29,7 @@ func _on_h_slider_value_changed(p_value: float) -> void:
 	value_changed.emit(p_value)
 
 
-func _on_h_slider_drag_ended(value_changed: bool) -> void:
+func _on_h_slider_drag_ended(_value_changed: bool) -> void:
 	is_dragging = false
 
 

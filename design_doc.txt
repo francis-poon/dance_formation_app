@@ -1,3 +1,28 @@
+alright so right now the most important things to work on are probably these
+- save system
+	- (7 days) both getting a save system working and in a way that i can save multiple
+	projects
+		- this will include a ui where you can select the project to be loaded
+		- this means i have to be able to set project name, a project preview,
+		
+	- (2 days) adding audio and audio playback
+	- (4 days) adding dancer labels
+problem is
+i do not want to work on any of these things
+im pretty sure i have a general idea of how to do each of these things and my mind
+just feels like they're tedious or the challenges involved in implementing these
+don't feel interesting in a way that's motivating. i also just generally have chicken
+scratch for code right now, so lowkey im just scared of adding more stuff and having
+to deal with how hard it'll be to add features to my spaghetti code.
+
+this is fine :)
+
+but once i get those three items done, that should be the end of phase 1 and i
+should be able to let people start using it. today is Tuesday 09/16. i 
+want to get this done in 2 weeks at the end of september, but ideally id like to
+but done in 1 week if possible.
+
+
 okay what's wrong this time. up to now i have been using the timeline size to
 equate to how long the timeline plays. but say that timeline on screen is 1000
 pixels wide and we only want 10 seconds, or even like a standard 6 minutes (360s),

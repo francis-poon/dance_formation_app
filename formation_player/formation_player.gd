@@ -2,6 +2,10 @@ extends Control
 
 @export var formation_display: FormationDisplay
 
+func load_project(project_data: Resource):
+	
+	pass
+
 
 func _on_formation_timeline_display_formation(id: int) -> void:
 	if id == -1:
