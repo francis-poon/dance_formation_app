@@ -1,6 +1,6 @@
 alright so right now the most important things to work on are probably these
 - save system
-	- (7 days) both getting a save system working and in a way that i can save multiple
+	- ((09/16) 2/7 days) both getting a save system working and in a way that i can save multiple
 	projects
 		- this will include a ui where you can select the project to be loaded
 		- this means i have to be able to set project name, a project preview,
