@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cgfss1l7gh1q5"]
+
+[node name="ProjectSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
