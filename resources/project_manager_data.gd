@@ -1,23 +1,12 @@
+class_name ProjectManagerData
 extends Resource
 
-class ProjectReference:
-	var id: int
-	var name: String
-	var resource_path: String
-	
-	func _init(p_id: int, p_name: String, p_resource_path: String):
-		id = p_id
-		name = p_name
-		resource_path = p_resource_path
+@export var project_dict: Dictionary
 
-class ATest:
-	var a: int
-	
-	func _init(p_a: int = 0):
-		a = p_a
+func _init(p_project_dict: Dictionary = {}):
+	project_dict = p_project_dict
 
-func _init():
-	resource_path
+
 #@export var test: ATest
 
 # Okay what do i need in this
