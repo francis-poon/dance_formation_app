@@ -11,5 +11,5 @@ func get_project_resource(project_id: int):
 func update_project(project_data: ProjectData):
 	pass
 
-func load_data():
+func load_data(resource_path: String):
 	pass

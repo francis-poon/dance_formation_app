@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://0p4g8t3u6wim" path="res://project_manager/project_manager.gd" id="1_xc7kj"]
 
-[node name="ProjectManager" type="Node"]
+[node name="ProjectManager" type="Node" groups=["project_manager"]]
 script = ExtResource("1_xc7kj")

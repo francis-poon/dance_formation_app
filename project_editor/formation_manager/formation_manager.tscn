@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://dcv5c4g0j2hc5" path="res://project_editor/formation_manager/formation_manager.gd" id="1_pd7fc"]
 
-[node name="FormationManager" type="Node"]
+[node name="FormationManager" type="Node" groups=["formation_manager"]]
 script = ExtResource("1_pd7fc")

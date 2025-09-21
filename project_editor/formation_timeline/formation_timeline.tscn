@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cqcmtelh2tsxi" path="res://utils/tick_based_timer.tscn" id="2_rn2de"]
 [ext_resource type="Script" uid="uid://c0ikrr4m7jrlv" path="res://project_editor/formation_timeline/timeline_tray.gd" id="3_dl0vl"]
 [ext_resource type="Texture2D" uid="uid://dcxwjms7w43jf" path="res://assets/gui/play.png" id="3_nn02e"]
-[ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://gui/window.tscn" id="4_dl0vl"]
+[ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://utils/gui/window.tscn" id="4_dl0vl"]
 [ext_resource type="Texture2D" uid="uid://b4gusatyir8dy" path="res://assets/gui/stop.png" id="4_dyarv"]
 [ext_resource type="Script" uid="uid://66ps4lxh77tv" path="res://project_editor/formation_timeline/playback_cursor.gd" id="4_e7h3w"]
 [ext_resource type="Texture2D" uid="uid://bs27fmrixxufq" path="res://assets/gui/slider_cursor.png" id="5_nn02e"]

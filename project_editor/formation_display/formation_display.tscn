@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://kmep7jy02ke" path="res://project_editor/formation_manager/formation.tscn" id="3_1kfqa"]
 [ext_resource type="Theme" uid="uid://05lc6pvo2kao" path="res://resources/themes/box_separator.tres" id="4_06e48"]
 [ext_resource type="Script" uid="uid://wa5map4faf3f" path="res://project_editor/formation_display/formation_editor.gd" id="4_heqxf"]
-[ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://gui/window.tscn" id="5_elco4"]
+[ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://utils/gui/window.tscn" id="5_elco4"]
 [ext_resource type="Script" uid="uid://b78fvxeytnmpc" path="res://project_editor/formation_display/formation_selector.gd" id="5_fnc6h"]
 [ext_resource type="PackedScene" uid="uid://ligh7w1gyua6" path="res://project_editor/formation_display/formation_button.tscn" id="6_i41fn"]
 
