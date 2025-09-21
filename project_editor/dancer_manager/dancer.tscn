@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfdfc7bs14n35"]
 
-[ext_resource type="Script" uid="uid://b1up6kx4kvukg" path="res://dancer_manager/dancer.gd" id="1_telqb"]
+[ext_resource type="Script" uid="uid://b1up6kx4kvukg" path="res://project_editor/dancer_manager/dancer.gd" id="1_telqb"]
 [ext_resource type="Texture2D" uid="uid://dbk0y2wmmhmet" path="res://assets/icons/dancer_icon.png" id="2_8r7sk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_telqb"]

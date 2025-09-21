@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" path="res://assets/blacknwhite/blueberry.png" id="5_h7c6y"]
 [ext_resource type="Script" uid="uid://bwawx1ylv3ejt" path="res://test/drag_droppable/scroll_timeline_proto.gd" id="6_gwfuy"]
 [ext_resource type="Texture2D" path="res://assets/lockpick/pinhole_locked.png" id="7_p1wi1"]
-[ext_resource type="Script" uid="uid://c0ikrr4m7jrlv" path="res://formation_timeline/timeline_tray.gd" id="8_h7c6y"]
+[ext_resource type="Script" uid="uid://c0ikrr4m7jrlv" path="res://project_editor/formation_timeline/timeline_tray.gd" id="8_h7c6y"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1wi1"]
 

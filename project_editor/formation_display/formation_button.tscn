@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ligh7w1gyua6"]
 
-[ext_resource type="Script" uid="uid://c8mtw212ym66x" path="res://formation_display/formation_button.gd" id="1_cijrj"]
+[ext_resource type="Script" uid="uid://c8mtw212ym66x" path="res://project_editor/formation_display/formation_button.gd" id="1_cijrj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ff0v"]
 

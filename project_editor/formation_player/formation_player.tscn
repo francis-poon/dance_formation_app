@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://wk30khyi3mu6"]
 
-[ext_resource type="Script" uid="uid://cadwljguendhq" path="res://formation_player/formation_player.gd" id="1_fmsq7"]
-[ext_resource type="PackedScene" uid="uid://di0qr31j0do0p" path="res://formation_display/formation_display.tscn" id="1_navmu"]
+[ext_resource type="Script" uid="uid://cadwljguendhq" path="res://project_editor/formation_player/formation_player.gd" id="1_fmsq7"]
+[ext_resource type="PackedScene" uid="uid://di0qr31j0do0p" path="res://project_editor/formation_display/formation_display.tscn" id="1_navmu"]
 [ext_resource type="Theme" uid="uid://ol31r6og1ebc" path="res://resources/themes/widnow_margin.tres" id="2_23xvp"]
-[ext_resource type="PackedScene" uid="uid://dgoaa7vcfvsd2" path="res://formation_timeline/formation_timeline.tscn" id="2_fmsq7"]
+[ext_resource type="PackedScene" uid="uid://dgoaa7vcfvsd2" path="res://project_editor/formation_timeline/formation_timeline.tscn" id="2_fmsq7"]
 [ext_resource type="Theme" uid="uid://05lc6pvo2kao" path="res://resources/themes/box_separator.tres" id="3_x6qt1"]
 
 [node name="FormationPlayer" type="Control" node_paths=PackedStringArray("formation_display")]
