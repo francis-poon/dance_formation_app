@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ikxgpnldqm7k"]
+[gd_scene load_steps=3 format=3 uid="uid://ikxgpnldqm7k"]
 
 [ext_resource type="Script" uid="uid://dcv5c4g0j2hc5" path="res://project_editor/formation_manager/formation_manager.gd" id="1_pd7fc"]
+[ext_resource type="PackedScene" uid="uid://kmep7jy02ke" path="res://project_editor/formation_manager/formation.tscn" id="2_bm1pl"]
 
 [node name="FormationManager" type="Node" groups=["formation_manager"]]
 script = ExtResource("1_pd7fc")
+formation_scene = ExtResource("2_bm1pl")

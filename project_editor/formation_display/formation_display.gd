@@ -1,26 +1,31 @@
 class_name FormationDisplay
 extends Control
 
-@export var manager: FormationManager
-@export var selector: FormationSelector
-@export var editor: FormationEditor
+@export var _selector: FormationSelector
+@export var _editor: FormationEditor
+
+var _manager: FormationManager
 
 func _ready() -> void:
-	for formation in manager.data.id_formation_dict.values():
-		selector.add_formation(formation)
+	_manager = get_tree().get_first_node_in_group("formation_manager")
+	_manager.ready.connect(_on_formation_manager_ready)
+
+func _on_formation_manager_ready():
+	for formation in _manager.data.id_formation_dict.values():
+		_selector.add_formation(formation)
 
 func _on_new_formation_request() -> void:
-	var new_formation: DanceFormation = manager.get_new_formation()
-	selector.add_formation(new_formation)
-	editor.set_formation(new_formation)
+	var new_formation: DanceFormation = _manager.get_new_formation()
+	_selector.add_formation(new_formation)
+	_editor.set_formation(new_formation)
 
 
 func _on_select_formation(id: int) -> void:
 	display_formation(id)
 
 func display_formation(id: int):
-	if manager.has_formation(id):
-		editor.set_formation(manager.get_formation(id))
+	if _manager.has_formation(id):
+		_editor.set_formation(_manager.get_formation(id))
 
 func clear_display():
-	editor.clear_formation()
+	_editor.clear_formation()

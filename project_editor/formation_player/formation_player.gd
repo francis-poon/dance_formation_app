@@ -1,3 +1,4 @@
+class_name FormationPlayer
 extends Control
 
 @export var formation_display: FormationDisplay

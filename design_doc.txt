@@ -1,6 +1,11 @@
+right now, formation display reads data from formation manager in order to load the formation
+selector. formation manager should send a signal everytime it loads new data so that display
+can update. or maybe editor should control when player (contains display) forces update when
+new project is loaded into the manager?
+
 alright so right now the most important things to work on are probably these
 - save system
-	- ((09/16) 5/7 days) both getting a save system working and in a way that i can save multiple
+	- ((09/16) 6/7 days) both getting a save system working and in a way that i can save multiple
 	projects
 		- this will include a ui where you can select the project to be loaded
 		- this means i have to be able to set project name, a project preview,

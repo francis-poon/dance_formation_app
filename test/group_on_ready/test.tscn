@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ywxn1ye5aym4"]
+
+[ext_resource type="Script" uid="uid://o8uwb3l46k1k" path="res://test/group_on_ready/node_2d.gd" id="1_mor7l"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Node2D"]
+script = ExtResource("1_mor7l")
+
+[node name="Node" type="Node" parent="." groups=["project_manager"]]
