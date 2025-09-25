@@ -3,6 +3,9 @@ extends Control
 
 @export var formation_display: FormationDisplay
 
+func get_timeline_data():
+	pass
+
 func load_project(project_data: Resource):
 	
 	pass

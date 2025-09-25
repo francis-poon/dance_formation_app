@@ -7,6 +7,9 @@ signal new_formation_request
 @export var formation_button_scene: PackedScene
 @export var formation_container: Container
 
+func clear_formations():
+	for child in formation_container.get_children():
+		child.queue_free()
 
 func add_formation(formation: DanceFormation):
 	var formation_button: FormationButton = formation_button_scene.instantiate()

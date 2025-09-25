@@ -1,22 +1,21 @@
 class_name FormationManager
 extends Node
 
+signal new_data_loaded
+
 @export var formation_scene: PackedScene
 
 var data: DanceFormationCollection
 
 func _ready():
 	print("TODO: Make FormationManager check if there are other instances.")
-	load_data()
+	data = DanceFormationCollection.new()
 
 #func _gui_input(event: InputEvent) -> void:
 	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT \
 	 #and event.is_pressed() and current_formation:
 		#current_formation.add_dancer(event.position)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("save"):
-			save_data()
 
 func get_formation(id: int) -> DanceFormation:
 	if data.id_formation_dict.has(id):
@@ -38,12 +37,14 @@ func add_formation(formation: DanceFormation) -> void:
 		formation.request_rand_id()
 	data.id_formation_dict[formation.data.id] = formation
 
-func save_data():
+func get_save_data():
 	ResourceSaver.save(data.serialize(), "temp.tres")
 
-func load_data():
-	data = ResourceLoader.load("temp.tres")
+func load_data(formation_data: DanceFormationCollection):
+	data = formation_data
 	if not data or data is not DanceFormationCollection:
 		data = DanceFormationCollection.new()
+		new_data_loaded.emit()
 		return
 	data.deserialize()
+	new_data_loaded.emit()

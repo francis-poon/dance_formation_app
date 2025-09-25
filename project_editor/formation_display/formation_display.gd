@@ -8,9 +8,10 @@ var _manager: FormationManager
 
 func _ready() -> void:
 	_manager = get_tree().get_first_node_in_group("formation_manager")
-	_manager.ready.connect(_on_formation_manager_ready)
+	_manager.new_data_loaded.connect(_on_manager_new_data_loaded)
 
-func _on_formation_manager_ready():
+func _on_manager_new_data_loaded():
+	_selector.clear_formations()
 	for formation in _manager.data.id_formation_dict.values():
 		_selector.add_formation(formation)
 
