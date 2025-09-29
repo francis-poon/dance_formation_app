@@ -6,7 +6,7 @@ extends Control
 func get_timeline_data():
 	pass
 
-func load_project(project_data: Resource):
+func load_timeline_data(timeline_data: Resource):
 	
 	pass
 

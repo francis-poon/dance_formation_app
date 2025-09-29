@@ -38,7 +38,7 @@ func add_formation(formation: DanceFormation) -> void:
 	data.id_formation_dict[formation.data.id] = formation
 
 func get_save_data():
-	ResourceSaver.save(data.serialize(), "temp.tres")
+	return data.seiralize()
 
 func load_data(formation_data: DanceFormationCollection):
 	data = formation_data

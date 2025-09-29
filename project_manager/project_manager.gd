@@ -9,6 +9,10 @@ func get_project_resource(project_id: int) -> ProjectData:
 	print("Warning ProjectManager.get_project_resource not implemented")
 	return ProjectData.new()
 
+func get_project_save_path(project_id: int) -> String:
+	print("Warning ProjectManager.get_project_save_path not implemented")
+	return ""
+
 func update_project(project_data: ProjectData):
 	print("Warning ProjectManager.update_project not implemented")
 	pass

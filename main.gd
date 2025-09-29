@@ -36,12 +36,9 @@ func _input(event: InputEvent) -> void:
 		ResourceSaver.save(_project_manager.get_save_data(), _project_manager_res_path)
 		
 		var project_data: ProjectData = _project_editor.get_project_data()
-		var project_save_path: String = _project_manager.get_project_resource(project_data.id).
-		ResourceSaver.save(_project_editor.get_project_data(), _project_manager.get_project_resource(project_id))
-		
-		_project_manager.get_save_data()
-		_project_editor.get_project_data()
-		#_project_editor.get_save_data()
+		var project_save_path: String = _project_manager.get_project_save_path(project_data.id)
+		ResourceSaver.save(_project_editor.get_project_data(), project_save_path)
+
 
 func _load_data():
 	_project_manager.load_data(_project_manager_res_path)

@@ -13,6 +13,7 @@ func _ready():
 func load_project_data(p_project_data: ProjectData):
 	project_data = p_project_data
 	_formation_manager.load_data(project_data.formation_data)
+	_formation_player.load_project(project_data.timeline_data)
 	# have FormationManager load the formation data and then 
 	pass
 

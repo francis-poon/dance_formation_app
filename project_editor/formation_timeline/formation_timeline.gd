@@ -4,7 +4,11 @@ extends Control
 signal display_formation(id: int)
 
 @export var _timeline_tray: TimelineTray
-@export var wait_time: float = 10
+@export var timeline_duration: float = 10:
+	set(value):
+		timeline_duration = value
+		_timeline_tray.timeline_duration = value
+		_tick_timer.wait_time = value
 
 @export var _play_pause_button: Button
 @export var _tick_timer: TickBasedTimer
@@ -16,8 +20,16 @@ var _is_playing_before_drag: bool
 
 func _ready():
 	_is_playing_before_drag = false
-	_timeline_tray.timeline_duration = wait_time
-	_tick_timer.wait_time = wait_time
+	_timeline_tray.timeline_duration = timeline_duration
+	_tick_timer.wait_time = timeline_duration
+
+func get_timeline_data() -> TimelineData:
+	var data: TimelineData = TimelineData.new(timeline_duration, _timeline_tray.marker_cues)
+	return data
+
+func load_timeline_data(timeline_data: TimelineData):
+	timeline_duration = timeline_data.duration
+	_timeline_tray.set_markers(timeline_data.markers)
 
 func _playback_value_changed(value: float) -> void:
 	if _playback_cursor.is_dragging:

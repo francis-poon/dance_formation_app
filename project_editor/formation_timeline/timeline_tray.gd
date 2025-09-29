@@ -21,6 +21,24 @@ func _ready():
 	_update_size()
 	marker_cues = []
 
+func set_markers(markers: Array):
+	var formation_manager: FormationManager = get_tree().get_first_node_in_group("formation_manager")
+	
+	marker_cues = markers
+	marker_cues.sort_custom(func(a, b): return a[0] < b[0])
+	for child in _holder.get_children():
+		child.queue_free()
+	for marker in marker_cues:
+		var formation: DanceFormation = formation_manager.get_formation(marker[1])
+		var timeline_object: FormationTimelineObject = FormationTimelineObject.new()
+		timeline_object.set_data(formation.data.id, formation.get_preview())
+		
+		var target_scale: float = 0.5 * size.y / timeline_object.size.y
+		timeline_object.scale = Vector2(target_scale, target_scale)
+		_holder.add_child(timeline_object)
+		timeline_object.position = Vector2(_time_to_position(marker[0]), size.y / 2 - timeline_object.size.y * timeline_object.scale.y / 2)
+	data_updated.emit()
+
 func get_current_value():
 	return _playback_cursor.value
 
@@ -58,3 +76,8 @@ func _position_to_time(x_pos: float) -> float:
 	if current_pixels_per_second == 0:
 		return -1
 	return x_pos / current_pixels_per_second
+
+func _time_to_position(time: float) -> float:
+	if current_pixels_per_second == 0:
+		return -1
+	return time * current_pixels_per_second
