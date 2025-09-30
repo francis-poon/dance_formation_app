@@ -15,11 +15,8 @@ var _project_manager_res_path: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if Globals.developer_mode:
-		_save_dir = "res://saves/"
-	else:
-		_save_dir = "user://saves/"
-	_project_dir = _save_dir + "projects/"
+	_save_dir = Globals.get_save_dir_root()
+	_project_dir = Globals.get_project_save_dir()
 	_project_manager_res_path = _save_dir + "project_manager_data.tres"
 	
 	_project_manager = get_tree().get_first_node_in_group("project_manager")
@@ -45,6 +42,8 @@ func _input(event: InputEvent) -> void:
 func _load_data():
 	_project_manager.load_data(_project_manager_res_path)
 
-func _on_project_selected(project_id: int):
+
+func _on_project_selector_open_project(project_id: int) -> void:
 	_project_selector.hide()
 	_project_editor.load_project_data(_project_manager.get_project_resource(project_id))
+	_project_editor.show()
