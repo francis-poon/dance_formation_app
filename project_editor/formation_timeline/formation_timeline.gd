@@ -36,7 +36,7 @@ func _playback_value_changed(value: float) -> void:
 		_tick_timer.set_time(value)
 	_update_formation(value)
 
-func _on_color_rect_2_data_updated() -> void:
+func _on_timeline_tray_data_updated() -> void:
 	_update_formation(_timeline_tray.get_current_value())
 
 func _update_formation(value):

@@ -28,6 +28,8 @@ func _ready() -> void:
 	_load_data()
 
 func _input(event: InputEvent) -> void:
+	# TODO: This needs to only activate when in project editing mode
+	# Do this with a state machine or just a boolean?
 	if event.is_action_pressed("save"):
 		print("Save")
 		# Get project save data, update the manager with project reference

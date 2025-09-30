@@ -19,7 +19,7 @@ func load_project_data(p_project_data: ProjectData):
 
 func get_project_data():
 	project_data.formation_data = _formation_manager.get_save_data()
-	project_data.timeline_data = _formation_manager.get_timeline_data()
+	project_data.timeline_data = _formation_player.get_timeline_data()
 	# What do i need to do here?
 	# I need to pull the timeline data and formation data and compile it into
 	# the ProjectData and return it?
