@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dgoaa7vcfvsd2" path="res://project_editor/formation_timeline/formation_timeline.tscn" id="2_fmsq7"]
 [ext_resource type="Theme" uid="uid://05lc6pvo2kao" path="res://resources/themes/box_separator.tres" id="3_x6qt1"]
 
-[node name="FormationPlayer" type="Control" node_paths=PackedStringArray("formation_display")]
+[node name="FormationPlayer" type="Control" node_paths=PackedStringArray("formation_display", "_formation_timeline")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +16,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_fmsq7")
 formation_display = NodePath("MarginContainer/VBoxContainer2/FormationDisplay")
+_formation_timeline = NodePath("MarginContainer/VBoxContainer2/FormationTimeline")
 
 [node name="Background" type="ColorRect" parent="."]
 z_index = -1

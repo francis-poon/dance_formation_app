@@ -17,6 +17,11 @@ var _project_manager_res_path: String
 func _ready() -> void:
 	_save_dir = Globals.get_save_dir_root()
 	_project_dir = Globals.get_project_save_dir()
+	if not DirAccess.dir_exists_absolute(_save_dir):
+		DirAccess.make_dir_recursive_absolute(_save_dir)
+	if not DirAccess.dir_exists_absolute(_project_dir):
+		DirAccess.make_dir_recursive_absolute(_project_dir)
+	
 	_project_manager_res_path = _save_dir + "project_manager_data.tres"
 	
 	_project_manager = get_tree().get_first_node_in_group("project_manager")

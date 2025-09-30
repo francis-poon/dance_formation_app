@@ -8,6 +8,7 @@ var _project_manager: ProjectManager
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_project_manager = get_tree().get_first_node_in_group("project_manager")
+	_project_manager.new_data_loaded.connect(_on_project_manager_new_data_loaded)
 	# for testing
 	# listen to when project manager has loaded data
 	# "add" new project
@@ -30,6 +31,5 @@ func _on_project_selected(project_id: int):
 
 func _on_project_manager_new_data_loaded():
 	_on_new_project()
-	await _project_manager.updated
 	_on_project_selected(_project_manager.data.project_dict.keys()[0])
 	

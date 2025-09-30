@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ikxgpnldqm7k" path="res://project_editor/formation_manager/formation_manager.tscn" id="1_qe61q"]
 [ext_resource type="PackedScene" uid="uid://wk30khyi3mu6" path="res://project_editor/formation_player/formation_player.tscn" id="2_iogwg"]
 
-[node name="ProjectEditor" type="Control"]
+[node name="ProjectEditor" type="Control" node_paths=PackedStringArray("_formation_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_iogwg")
+_formation_player = NodePath("FormationPlayer")
 
 [node name="FormationManager" parent="." instance=ExtResource("1_qe61q")]
 

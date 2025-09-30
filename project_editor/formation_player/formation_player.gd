@@ -2,13 +2,13 @@ class_name FormationPlayer
 extends Control
 
 @export var formation_display: FormationDisplay
+@export var _formation_timeline: FormationTimeline
 
 func get_timeline_data():
 	pass
 
-func load_timeline_data(timeline_data: Resource):
-	
-	pass
+func load_timeline_data(timeline_data: TimelineData):
+	_formation_timeline.load_timeline_data(timeline_data)
 
 
 func _on_formation_timeline_display_formation(id: int) -> void:

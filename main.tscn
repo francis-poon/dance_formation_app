@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cgfss1l7gh1q5" path="res://project_selector/project_selector.tscn" id="4_272bh"]
 [ext_resource type="Script" uid="uid://gsidprhen4f" path="res://project_selector/project_selector.gd" id="4_lquwl"]
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" node_paths=PackedStringArray("_project_selector", "_project_editor")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_lquwl")
+_project_selector = NodePath("ProjectSelector")
+_project_editor = NodePath("ProjectEditor")
 
 [node name="ProjectManager" parent="." instance=ExtResource("1_1bvp3")]
 
