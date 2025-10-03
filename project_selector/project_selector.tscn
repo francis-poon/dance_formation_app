@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://cgfss1l7gh1q5"]
+[gd_scene load_steps=3 format=3 uid="uid://cgfss1l7gh1q5"]
+
+[ext_resource type="Theme" uid="uid://ol31r6og1ebc" path="res://resources/themes/widnow_margin.tres" id="1_r8jv2"]
+[ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://utils/gui/window.tscn" id="2_xnsdq"]
 
 [node name="ProjectSelector" type="Control"]
 layout_mode = 3
@@ -7,3 +10,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.223529, 0.231373, 0.278431, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_r8jv2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Window" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_xnsdq")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[editable path="MarginContainer/VBoxContainer/Window"]
