@@ -11,12 +11,17 @@ signal updated
 func new_project():
 	var new_project: ProjectData = ProjectData.new()
 	var new_project_ref: ProjectReference = ProjectReference.new(new_project.id, new_project.name)
-	ResourceSaver.save(new_project_ref, new_project_ref.project_resource_path)
+	ResourceSaver.save(new_project, new_project_ref.project_resource_path)
 	data.project_dict[new_project_ref.id] = new_project_ref
 	updated.emit()
 
 func get_project_resource(project_id: int) -> ProjectData:
-	print("Warning ProjectManager.get_project_resource not implemented")
+	if data.project_dict.has(project_id):
+		var project_reference: ProjectReference = data.project_dict[project_id]
+		var project_data: ProjectData = ResourceLoader.load(project_reference.project_resource_path)
+		if project_data:
+			return project_data
+	#print("Warning ProjectManager.get_project_resource not implemented")
 	return ProjectData.new()
 
 func get_project_save_path(project_id: int) -> String:

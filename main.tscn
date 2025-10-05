@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://lajv2oy2ed43"]
+[gd_scene load_steps=5 format=3 uid="uid://lajv2oy2ed43"]
 
 [ext_resource type="PackedScene" uid="uid://c6byr407o8pxq" path="res://project_manager/project_manager.tscn" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://cw2o2gxqr3yrr" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ch4bcgceosiam" path="res://project_editor/project_editor.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cgfss1l7gh1q5" path="res://project_selector/project_selector.tscn" id="4_272bh"]
-[ext_resource type="Script" uid="uid://gsidprhen4f" path="res://project_selector/project_selector.gd" id="4_lquwl"]
 
 [node name="Main" type="Control" node_paths=PackedStringArray("_project_selector", "_project_editor")]
 layout_mode = 3
@@ -23,7 +22,6 @@ _project_editor = NodePath("ProjectEditor")
 [node name="ProjectSelector" parent="." instance=ExtResource("4_272bh")]
 layout_mode = 1
 mouse_filter = 1
-script = ExtResource("4_lquwl")
 
 [node name="ProjectEditor" parent="." instance=ExtResource("3_h2yge")]
 visible = false

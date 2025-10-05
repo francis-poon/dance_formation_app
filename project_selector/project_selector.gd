@@ -30,6 +30,6 @@ func _on_project_selected(project_id: int):
 	open_project.emit(project_id)
 
 func _on_project_manager_new_data_loaded():
-	_on_new_project()
+	#_on_new_project()
 	_on_project_selected(_project_manager.data.project_dict.keys()[0])
 	

@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgfss1l7gh1q5"]
+[gd_scene load_steps=5 format=3 uid="uid://cgfss1l7gh1q5"]
 
+[ext_resource type="Script" uid="uid://gsidprhen4f" path="res://project_selector/project_selector.gd" id="1_r3ht2"]
 [ext_resource type="Theme" uid="uid://ol31r6og1ebc" path="res://resources/themes/widnow_margin.tres" id="1_r8jv2"]
+[ext_resource type="FontFile" uid="uid://dig8d2l66j4yw" path="res://assets/fonts/Pixeloid_Font_0_5/OpenType (.otf)/PixeloidMono.otf" id="2_r3ht2"]
 [ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://utils/gui/window.tscn" id="2_xnsdq"]
 
 [node name="ProjectSelector" type="Control"]
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_r3ht2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
@@ -33,13 +36,54 @@ theme = ExtResource("1_r8jv2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_r3ht2")
+theme_override_font_sizes/font_size = 32
+text = " GoDance"
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+color = Color(0.709804, 0.737255, 0.796078, 1)
 
-[node name="Window" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_xnsdq")]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
-[editable path="MarginContainer/VBoxContainer/Window"]
+[node name="Window" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_xnsdq")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Window/MarginContainer/ColorRect" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Window/MarginContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.709804, 0.737255, 0.796078, 1)
+
+[editable path="MarginContainer/VBoxContainer/HBoxContainer/Window"]
