@@ -5,4 +5,4 @@
 
 [node name="FormationManager" type="Node" groups=["formation_manager"]]
 script = ExtResource("1_pd7fc")
-formation_scene = ExtResource("2_bm1pl")
+_formation_scene = ExtResource("2_bm1pl")

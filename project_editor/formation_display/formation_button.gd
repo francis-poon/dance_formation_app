@@ -18,7 +18,7 @@ func set_formation(p_formation: DanceFormation):
 
 func _on_pressed() -> void:
 	if formation:
-		select_formation.emit(formation.data.id)
+		select_formation.emit(formation.id)
 	else:
 		select_formation.emit(-1)
 
@@ -26,7 +26,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	set_drag_preview(_get_preview())
 	
 	var drag_data: FormationTimelineObject = FormationTimelineObject.new()
-	drag_data.set_data(formation.data.id, formation.get_preview())
+	drag_data.set_data(formation.id, formation.get_preview())
 	
 	return drag_data
 

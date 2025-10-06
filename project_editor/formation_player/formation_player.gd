@@ -4,6 +4,12 @@ extends Control
 @export var formation_display: FormationDisplay
 @export var _formation_timeline: FormationTimeline
 
+func save_data() -> TimelineData:
+	return _formation_timeline.save_data()
+
+func load_data(data: TimelineData):
+	_formation_timeline.load_data(data)
+
 func get_timeline_data():
 	pass
 

@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_8uro3")
-dancer_scene = ExtResource("2_esxfy")
+_dancer_scene = ExtResource("2_esxfy")
 stage = NodePath("Stage")
 _preview_scene = ExtResource("3_qqrjh")
 
@@ -35,3 +35,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 color = Color(0.223529, 0.231373, 0.278431, 1)
+
+[connection signal="formation_changed" from="." to="." method="_on_formation_changed"]

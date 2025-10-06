@@ -1,10 +1,10 @@
 class_name ProjectManagerData
 extends Resource
 
-@export var project_dict: Dictionary
+@export var project_refs: Array[ProjectReference]
 
-func _init(p_project_dict: Dictionary = {}):
-	project_dict = p_project_dict
+func _init(p_project_refs: Array[ProjectReference] = []):
+	project_refs = p_project_refs
 
 
 #@export var test: ATest
