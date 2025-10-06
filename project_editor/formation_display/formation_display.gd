@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func _on_manager_new_data_loaded():
 	_selector.clear_formations()
-	for formation in _manager.data.id_formation_dict.values():
+	for formation in _manager.get_all_formations():
 		_selector.add_formation(formation)
 
 func _on_new_formation_request() -> void:

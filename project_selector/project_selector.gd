@@ -31,5 +31,5 @@ func _on_project_selected(project_id: int):
 
 func _on_project_manager_new_data_loaded():
 	#_on_new_project()
-	_on_project_selected(_project_manager.data.project_dict.keys()[0])
+	_on_project_selected(_project_manager.project_ref_dict.keys()[0])
 	

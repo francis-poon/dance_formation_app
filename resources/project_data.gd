@@ -3,11 +3,11 @@ extends Resource
 
 @export var id: int
 @export var name: String
-@export var formation_data: DanceFormationCollection
+@export var formation_data: FormationManagerData
 @export var timeline_data: TimelineData
 
 func _init(p_id: int = -1, p_name: String = "Untitled Project",
-p_formation_data: DanceFormationCollection = DanceFormationCollection.new(),
+p_formation_data: FormationManagerData = FormationManagerData.new(),
 p_timeline_data: TimelineData = TimelineData.new()):
 	id = p_id
 	if id == -1:

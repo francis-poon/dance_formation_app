@@ -18,18 +18,18 @@ signal display_formation(id: int)
 var current_formation_id: int = -1
 var _is_playing_before_drag: bool
 
+func save_data() -> TimelineData:
+	var data: TimelineData = TimelineData.new(timeline_duration, _timeline_tray.marker_cues)
+	return data
+
+func load_data(data: TimelineData):
+	timeline_duration = data.duration
+	_timeline_tray.set_markers(data.markers)
+
 func _ready():
 	_is_playing_before_drag = false
 	_timeline_tray.timeline_duration = timeline_duration
 	_tick_timer.wait_time = timeline_duration
-
-func get_timeline_data() -> TimelineData:
-	var data: TimelineData = TimelineData.new(timeline_duration, _timeline_tray.marker_cues)
-	return data
-
-func load_timeline_data(timeline_data: TimelineData):
-	timeline_duration = timeline_data.duration
-	_timeline_tray.set_markers(timeline_data.markers)
 
 func _playback_value_changed(value: float) -> void:
 	if _playback_cursor.is_dragging:

@@ -1,5 +1,37 @@
 extends Control
 
+# make it first
+# make it first
+# make it first
+# just make it
+# make it exist
+# make it work
+# make it first
+# make it be real
+# get it out of your head
+# get it to people
+# get something that works
+# get anything works 
+# it doesn't have to be good
+# it doesn't have to work well
+# it doesn't even have to work all the time
+# it doesn't even have to work correctly
+# get something that does something, anything at all
+# we can make it better from there
+# that's the part youre good at
+# making things work better
+# don't worry about that right now
+# don't worry about it being good right now
+# there's no doubt that you can make it good
+# you will make it good
+# just make it bad right now
+# please im begging you francis make it at all
+# don't keep letting everything you are
+# stop you
+# you aren't strong enough to stop yourself
+# from doing all the things you want to do
+# so go do them
+
 @export var _project_selector: Control
 @export var _project_editor: ProjectEditor
 
@@ -27,6 +59,7 @@ func _ready() -> void:
 	_project_manager = get_tree().get_first_node_in_group("project_manager")
 	if _project_manager == null:
 		print("Failed to load project manager")
+	
 	_load_data()
 
 func _input(event: InputEvent) -> void:
@@ -37,18 +70,24 @@ func _input(event: InputEvent) -> void:
 		# Get project save data, update the manager with project reference
 		# save the project data to /saves/projects/<project_id>.tres
 		# save the project manager to saves/project_manager_data.tres
-		ResourceSaver.save(_project_manager.get_save_data(), _project_manager_res_path)
+		ResourceSaver.save(_project_manager.save_data(), _project_manager_res_path)
 		
-		var project_data: ProjectData = _project_editor.get_project_data()
+		var project_data: ProjectData = _project_editor.save_data()
 		var project_save_path: String = _project_manager.get_project_save_path(project_data.id)
-		ResourceSaver.save(_project_editor.get_project_data(), project_save_path)
+		ResourceSaver.save(project_data, project_save_path)
 
 
 func _load_data():
-	_project_manager.load_data(_project_manager_res_path)
+	var project_manager_data: ProjectManagerData = ProjectManagerData.new()
+	if FileAccess.file_exists(_project_manager_res_path):
+		var data = ResourceLoader.load(_project_manager_res_path)
+		if data and data is ProjectManagerData:
+			project_manager_data = data
+	_project_manager.load_data(project_manager_data)
 
 
 func _on_project_selector_open_project(project_id: int) -> void:
 	_project_selector.hide()
-	_project_editor.load_project_data(_project_manager.get_project_resource(project_id))
 	_project_editor.show()
+	await get_tree().process_frame
+	_project_editor.load_data(_project_manager.get_project_resource(project_id))

@@ -31,7 +31,7 @@ func set_markers(markers: Array):
 	for marker in marker_cues:
 		var formation: DanceFormation = formation_manager.get_formation(marker[1])
 		var timeline_object: FormationTimelineObject = FormationTimelineObject.new()
-		timeline_object.set_data(formation.data.id, formation.get_preview())
+		timeline_object.set_data(formation.id, formation.get_preview())
 		
 		var target_scale: float = 0.5 * size.y / timeline_object.size.y
 		timeline_object.scale = Vector2(target_scale, target_scale)
