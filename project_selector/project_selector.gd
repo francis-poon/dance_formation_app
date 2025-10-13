@@ -4,7 +4,7 @@ extends Control
 signal open_project(project_id: int)
 
 @export var _project_selection_holder: Control
-@export var _open_button: Button
+@export var _open_project_button: Button
 @export var _project_select_button_scene: PackedScene
 
 var _project_manager: ProjectManager
@@ -23,22 +23,25 @@ func _ready() -> void:
 	_project_manager = get_tree().get_first_node_in_group("project_manager")
 	_project_manager.new_data_loaded.connect(_on_project_manager_new_data_loaded)
 	_project_manager.updated.connect(_on_project_manager_update)
+	
+	_open_project_button.disabled = true
 
 # ------------------------------------------------------------------------------
 ## Internal project button updating functions to reflect state of project manager
 
-func _update_project_button(project_id: int):
+func _update_project_select_button(project_id: int):
 	var project_name: String = _project_manager.get_project_name(project_id)
 	_project_selection_button_dict[project_id].load_data(project_id, project_name)
 
-func _add_project_button(project_id: int):
+func _add_project_select_button(project_id: int):
 	var project_selection_button: ProjectSelectButton = _project_select_button_scene.instantiate()
 	var project_name: String = _project_manager.get_project_name(project_id)
 	project_selection_button.load_data(project_id, project_name)
+	project_selection_button.select_project.connect(_on_project_selected)
 	_project_selection_button_dict[project_id] = project_selection_button
 	_project_selection_holder.add_child(project_selection_button)
 
-func _delete_project_button(project_id: int):
+func _delete_project_select_button(project_id: int):
 	pass
 
 # ------------------------------------------------------------------------------
@@ -59,6 +62,7 @@ func _on_modify_project_button_pressed():
 
 func _on_project_selected(project_button: ProjectSelectButton):
 	_selected_project_button = project_button
+	_open_project_button.disabled = false
 
 func _on_project_open_pressed():
 	if _selected_project_button == null:
@@ -68,10 +72,10 @@ func _on_project_open_pressed():
 func _on_project_manager_new_data_loaded():
 	_project_selection_button_dict = {}
 	_selected_project_button = null
-	for child in _project_selection_holder:
+	for child in _project_selection_holder.get_children():
 		child.queue_free()
 	for project_id in _project_manager.get_project_ids():
-		_add_project_button(project_id)
+		_add_project_select_button(project_id)
 	#_on_new_project()
 	#_on_project_selected(_project_manager.project_ref_dict.keys()[0])
 	
@@ -79,8 +83,8 @@ func _on_project_manager_update(project_id: int, mode: ProjectManager.UpdateMode
 	# project update can be a new project, modify, or delete
 	match mode:
 		ProjectManager.UpdateMode.MODIFY:
-			_update_project_button(project_id)
+			_update_project_select_button(project_id)
 		ProjectManager.UpdateMode.ADD:
-			_add_project_button(project_id)
+			_add_project_select_button(project_id)
 		ProjectManager.UpdateMode.DELETE:
 			pass

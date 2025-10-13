@@ -51,7 +51,9 @@ func delete_project(project_id: int):
 # ------------------------------------------------------------------------------
 ## Project data getters
 func get_project_ids() -> Array[int]:
-	return project_ref_dict.keys()
+	var project_ids: Array[int] = []
+	project_ids.assign(project_ref_dict.keys())
+	return project_ids
 
 func get_project_name(project_id: int) -> String:
 	if not project_ref_dict.has(project_id):

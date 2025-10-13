@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxqj6rbr4dhru"]
 
 [ext_resource type="Script" uid="uid://bp2djia1uokoj" path="res://project_selector/project_select_button.gd" id="1_8i386"]
-[ext_resource type="Theme" uid="uid://c1lka17jhdqwe" path="res://resources/themes/project_selection_button_theme.tres" id="1_hpwec"]
+[ext_resource type="Theme" uid="uid://d3ahh5vjw4na2" path="res://resources/themes/menu_button_theme.tres" id="1_hpwec"]
 
 [node name="ProjectSelectButton" type="Button"]
 anchors_preset = 14
@@ -12,6 +12,7 @@ offset_top = -20.5
 offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 theme = ExtResource("1_hpwec")
 text = "Project Name"
 script = ExtResource("1_8i386")

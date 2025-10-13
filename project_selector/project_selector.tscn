@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgfss1l7gh1q5"]
+[gd_scene load_steps=7 format=3 uid="uid://cgfss1l7gh1q5"]
 
 [ext_resource type="Script" uid="uid://gsidprhen4f" path="res://project_selector/project_selector.gd" id="1_r3ht2"]
 [ext_resource type="Theme" uid="uid://ol31r6og1ebc" path="res://resources/themes/widnow_margin.tres" id="1_r8jv2"]
+[ext_resource type="PackedScene" uid="uid://dxqj6rbr4dhru" path="res://project_selector/project_select_button.tscn" id="2_cemrp"]
 [ext_resource type="FontFile" uid="uid://dig8d2l66j4yw" path="res://assets/fonts/Pixeloid_Font_0_5/OpenType (.otf)/PixeloidMono.otf" id="2_r3ht2"]
 [ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://utils/gui/window.tscn" id="2_xnsdq"]
+[ext_resource type="Theme" uid="uid://d3ahh5vjw4na2" path="res://resources/themes/menu_button_theme.tres" id="5_anyo4"]
 
-[node name="ProjectSelector" type="Control"]
+[node name="ProjectSelector" type="Control" node_paths=PackedStringArray("_project_selection_holder", "_open_project_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +15,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r3ht2")
+_project_selection_holder = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Window/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer")
+_open_project_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/OpenProjectButton")
+_project_select_button_scene = ExtResource("2_cemrp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
@@ -72,8 +77,7 @@ theme_override_constants/margin_bottom = 0
 [node name="NewProjectButton" type="Button" parent="MarginContainer/VBoxContainer/ColorRect/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("2_r3ht2")
-theme_override_font_sizes/font_size = 18
+theme = ExtResource("5_anyo4")
 text = "+ New Project"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -98,11 +102,37 @@ grow_vertical = 2
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Window/MarginContainer/ColorRect/MarginContainer"]
 layout_mode = 2
 
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Window/MarginContainer/ColorRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ProjectSelectButton" parent="MarginContainer/VBoxContainer/HBoxContainer/Window/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_cemrp")]
+layout_mode = 2
+
 [node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.709804, 0.737255, 0.796078, 1)
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ColorRect/MarginContainer/NewProjectButton" to="." method="_on_new_project"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_r8jv2")
+theme_override_constants/margin_left = 0
+
+[node name="OpenProjectButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("5_anyo4")
+text = "Open"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ColorRect/MarginContainer/NewProjectButton" to="." method="_on_new_project_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/OpenProjectButton" to="." method="_on_project_open_pressed"]
 
 [editable path="MarginContainer/VBoxContainer/HBoxContainer/Window"]
