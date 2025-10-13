@@ -14,14 +14,42 @@ enum UpdateMode {
 # or load it
 var project_ref_dict: Dictionary = {}
 
+# ------------------------------------------------------------------------------
+## Save/Load system
+func save_data() -> ProjectManagerData:
+	var project_refs: Array[ProjectReference] = []
+	project_refs.assign(project_ref_dict.values())
+	
+	return ProjectManagerData.new(project_refs)
 
+func load_data(data: ProjectManagerData):
+	project_ref_dict = {}
+	if data:
+		for project_ref in data.project_refs:
+			project_ref_dict[project_ref.id] = project_ref
+	new_data_loaded.emit()
+
+# ------------------------------------------------------------------------------
+## Project add, modify, and delete
 func new_project():
 	var new_project: ProjectData = ProjectData.new()
 	var new_project_ref: ProjectReference = ProjectReference.new(new_project.id, new_project.name)
 	ResourceSaver.save(new_project, new_project_ref.project_resource_path)
 	project_ref_dict[new_project_ref.id] = new_project_ref
-	updated.emit()
+	updated.emit(new_project_ref.id, UpdateMode.ADD)
 
+func update_project(project_data: ProjectData):
+	print("Warning ProjectManager.update_project not implemented")
+	updated.emit(project_data.id, UpdateMode.MODIFY)
+	pass
+
+func delete_project(project_id: int):
+	print("Warning ProjectManager.delete_project not implemented")
+	updated.emit(project_id, UpdateMode.DELETE)
+	pass
+
+# ------------------------------------------------------------------------------
+## Project data getters
 func get_project_ids() -> Array[int]:
 	return project_ref_dict.keys()
 
@@ -47,20 +75,4 @@ func get_project_save_path(project_id: int) -> String:
 		return project_reference.project_resource_path
 	return ""
 
-func update_project(project_data: ProjectData):
-	print("Warning ProjectManager.update_project not implemented")
-	pass
-
-
-func save_data() -> ProjectManagerData:
-	var project_refs: Array[ProjectReference] = []
-	project_refs.assign(project_ref_dict.values())
-	
-	return ProjectManagerData.new(project_refs)
-
-func load_data(data: ProjectManagerData):
-	project_ref_dict = {}
-	if data:
-		for project_ref in data.project_refs:
-			project_ref_dict[project_ref.id] = project_ref
-	new_data_loaded.emit()
+# ------------------------------------------------------------------------------
