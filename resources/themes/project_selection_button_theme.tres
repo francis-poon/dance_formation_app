@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c1lka17jhdqwe"]
+
+[ext_resource type="FontFile" uid="uid://dig8d2l66j4yw" path="res://assets/fonts/Pixeloid_Font_0_5/OpenType (.otf)/PixeloidMono.otf" id="1_y15t1"]
+
+[resource]
+Button/font_sizes/font_size = 27
+Button/fonts/font = ExtResource("1_y15t1")

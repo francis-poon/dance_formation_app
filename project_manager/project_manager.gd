@@ -2,7 +2,13 @@ class_name ProjectManager
 extends Node
 
 signal new_data_loaded
-signal updated
+signal updated(project_id: int, mode: UpdateMode)
+
+enum UpdateMode {
+	MODIFY,
+	ADD,
+	DELETE
+}
 
 # This will have a project manager data and will be called to update the data
 # or load it
@@ -15,6 +21,16 @@ func new_project():
 	ResourceSaver.save(new_project, new_project_ref.project_resource_path)
 	project_ref_dict[new_project_ref.id] = new_project_ref
 	updated.emit()
+
+func get_project_ids() -> Array[int]:
+	return project_ref_dict.keys()
+
+func get_project_name(project_id: int) -> String:
+	if not project_ref_dict.has(project_id):
+		return ""
+	
+	var project_reference: ProjectReference = project_ref_dict[project_id]
+	return project_reference.name
 
 func get_project_resource(project_id: int) -> ProjectData:
 	if project_ref_dict.has(project_id):

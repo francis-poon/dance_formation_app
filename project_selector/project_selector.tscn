@@ -50,7 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_r3ht2")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 36
 text = " GoDance"
 vertical_alignment = 1
 
@@ -58,6 +58,23 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 color = Color(0.709804, 0.737255, 0.796078, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_r8jv2")
+theme_override_constants/margin_bottom = 0
+
+[node name="NewProjectButton" type="Button" parent="MarginContainer/VBoxContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_r3ht2")
+theme_override_font_sizes/font_size = 18
+text = "+ New Project"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -85,5 +102,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.709804, 0.737255, 0.796078, 1)
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ColorRect/MarginContainer/NewProjectButton" to="." method="_on_new_project"]
 
 [editable path="MarginContainer/VBoxContainer/HBoxContainer/Window"]
