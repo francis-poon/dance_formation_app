@@ -70,9 +70,11 @@ func _input(event: InputEvent) -> void:
 		# Get project save data, update the manager with project reference
 		# save the project data to /saves/projects/<project_id>.tres
 		# save the project manager to saves/project_manager_data.tres
+		var project_data: ProjectData = _project_editor.save_data()
+		if not _project_manager.has_project(project_data.id):
+			_project_manager.add_project(project_data)
 		ResourceSaver.save(_project_manager.save_data(), _project_manager_res_path)
 		
-		var project_data: ProjectData = _project_editor.save_data()
 		var project_save_path: String = _project_manager.get_project_save_path(project_data.id)
 		ResourceSaver.save(project_data, project_save_path)
 
