@@ -22,6 +22,7 @@ func _ready():
 	marker_cues = []
 
 func set_markers(markers: Array):
+	#await _update_size()
 	var formation_manager: FormationManager = get_tree().get_first_node_in_group("formation_manager")
 	
 	marker_cues = markers
@@ -65,7 +66,7 @@ func _update_size():
 	# Updates size so that if the duration exceeds the the minimum pixels per
 	# second, the size is increaesd to fit the duration
 	# scale is pixels per second so size.x / timeline_duration
-	await get_tree().process_frame
+	#await get_tree().process_frame
 	current_pixels_per_second = size.x / timeline_duration
 	if current_pixels_per_second < minimum_pixels_per_second:
 		current_pixels_per_second = minimum_pixels_per_second
@@ -81,3 +82,8 @@ func _time_to_position(time: float) -> float:
 	if current_pixels_per_second == 0:
 		return -1
 	return time * current_pixels_per_second
+
+
+func _on_visibility_changed() -> void:
+	if is_visible_in_tree():
+		_update_size()

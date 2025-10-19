@@ -186,6 +186,7 @@ mouse_filter = 2
 [connection signal="toggled" from="Window/MarginContainer/ScrollContainer/VBoxContainer/PlayBackControls/HBoxContainer/PlayPauseButton" to="." method="_on_play_pause_button_toggled"]
 [connection signal="pressed" from="Window/MarginContainer/ScrollContainer/VBoxContainer/PlayBackControls/HBoxContainer/StopButton" to="." method="_on_stop_button_pressed"]
 [connection signal="data_updated" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray" to="." method="_on_timeline_tray_data_updated"]
+[connection signal="visibility_changed" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray" to="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray" method="_on_visibility_changed"]
 [connection signal="value_changed" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor" to="." method="_playback_value_changed"]
 [connection signal="drag_ended" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor/HSlider" to="." method="_on_h_slider_drag_ended"]
 [connection signal="drag_ended" from="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor/HSlider" to="Window/MarginContainer/ScrollContainer/VBoxContainer/TimelineTray/PlaybackCursor" method="_on_h_slider_drag_ended"]
