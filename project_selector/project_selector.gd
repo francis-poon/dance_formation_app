@@ -4,7 +4,8 @@ extends Control
 signal open_project(project_id: int)
 
 @export var _project_selection_holder: Control
-@export var _open_project_button: Button
+@export var _project_interact_buttons: Control
+
 @export var _project_naming_prompt: ProjectNamingPrompt
 @export var _create_project_prompt: CreateProjectPrompt
 @export var _project_select_button_scene: PackedScene
@@ -26,7 +27,9 @@ func _ready() -> void:
 	_project_manager.new_data_loaded.connect(_on_project_manager_new_data_loaded)
 	_project_manager.updated.connect(_on_project_manager_update)
 	
-	_open_project_button.disabled = true
+	for button in _project_interact_buttons.get_children():
+		if button is Button:
+			button.disabled = true
 
 # ------------------------------------------------------------------------------
 ## Internal project button updating functions to reflect state of project manager
@@ -64,12 +67,21 @@ func _on_modify_project_button_pressed():
 
 func _on_project_selected(project_button: ProjectSelectButton):
 	_selected_project_button = project_button
-	_open_project_button.disabled = false
+	for button in _project_interact_buttons.get_children():
+		if button is Button:
+			button.disabled = false
 
-func _on_project_open_pressed():
+func _on_edit_project_pressed():
 	if _selected_project_button == null:
 		return
 	open_project.emit(_selected_project_button.project_id)
+
+func _on_delete_project_pressed():
+	pass
+
+func _on_rename_project_pressed():
+	if _selected_project_button:
+		_project_naming_prompt.open(_selected_project_button.project_name)
 
 func _on_project_manager_new_data_loaded():
 	_project_selection_button_dict = {}
@@ -93,7 +105,10 @@ func _on_project_manager_update(project_id: int, mode: ProjectManager.UpdateMode
 
 
 func _on_project_naming_prompt_name_project(project_name: String) -> void:
-	pass # Replace with function body.
+	if _selected_project_button:
+		var project_id = _selected_project_button.project_id
+		_project_manager.rename_project(project_id, project_name)
+		
 
 
 func _on_create_project_prompt_cancel() -> void:

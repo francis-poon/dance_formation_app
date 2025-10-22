@@ -48,6 +48,12 @@ func update_project(project_data: ProjectData):
 	updated.emit(project_data.id, UpdateMode.MODIFY)
 	pass
 
+func rename_project(project_id: int, project_name: String):
+	if project_ref_dict.has(project_id):
+		var project_ref: ProjectReference = project_ref_dict[project_id]
+		project_ref.name = project_name
+		updated.emit(project_id, UpdateMode.MODIFY)
+
 func delete_project(project_id: int):
 	print("Warning ProjectManager.delete_project not implemented")
 	updated.emit(project_id, UpdateMode.DELETE)

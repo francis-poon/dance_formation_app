@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://b3tthl52cto2k" path="res://project_selector/project_naming_prompt.gd" id="7_bgq6n"]
 [ext_resource type="Script" uid="uid://bv8vhpy56hf72" path="res://project_selector/create_project_prompt.gd" id="8_nsngd"]
 
-[node name="ProjectSelector" type="Control" node_paths=PackedStringArray("_project_selection_holder", "_open_project_button", "_project_naming_prompt", "_create_project_prompt")]
+[node name="ProjectSelector" type="Control" node_paths=PackedStringArray("_project_selection_holder", "_project_interact_buttons", "_project_naming_prompt", "_create_project_prompt")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r3ht2")
 _project_selection_holder = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Window/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer")
-_open_project_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer/EditProjectButton")
+_project_interact_buttons = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/ProjectInteractButtons")
 _project_naming_prompt = NodePath("MarginContainer/ProjectNamingPrompt")
 _create_project_prompt = NodePath("MarginContainer/CreateProjectPrompt")
 _project_select_button_scene = ExtResource("2_cemrp")
@@ -129,26 +129,26 @@ grow_vertical = 2
 theme = ExtResource("1_r8jv2")
 theme_override_constants/margin_left = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer"]
+[node name="ProjectInteractButtons" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="EditProjectButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
+[node name="EditProjectButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/ProjectInteractButtons"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme = ExtResource("5_anyo4")
 text = "Edit"
 
-[node name="DeleteProjectButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
+[node name="DeleteProjectButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/ProjectInteractButtons"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme = ExtResource("5_anyo4")
 text = "Delete"
 
-[node name="RenameProjectButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
+[node name="RenameProjectButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/ProjectInteractButtons"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -328,9 +328,9 @@ theme = ExtResource("5_anyo4")
 text = "Cancel"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ColorRect/MarginContainer/NewProjectButton" to="." method="_on_new_project_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer/EditProjectButton" to="." method="_on_project_open_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer/DeleteProjectButton" to="." method="_on_project_open_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer/RenameProjectButton" to="." method="_on_project_open_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/ProjectInteractButtons/EditProjectButton" to="." method="_on_edit_project_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/ProjectInteractButtons/DeleteProjectButton" to="." method="_on_delete_project_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/ProjectInteractButtons/RenameProjectButton" to="." method="_on_rename_project_pressed"]
 [connection signal="name_project" from="MarginContainer/ProjectNamingPrompt" to="." method="_on_project_naming_prompt_name_project"]
 [connection signal="pressed" from="MarginContainer/ProjectNamingPrompt/VBoxContainer/ColorRect/MarginContainer/HBoxContainer/RenameButton" to="MarginContainer/ProjectNamingPrompt" method="_on_rename_button_pressed"]
 [connection signal="pressed" from="MarginContainer/ProjectNamingPrompt/VBoxContainer/ColorRect/MarginContainer/HBoxContainer/CancelButton" to="MarginContainer/ProjectNamingPrompt" method="_on_cancel_button_pressed"]

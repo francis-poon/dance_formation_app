@@ -73,7 +73,6 @@ func _input(event: InputEvent) -> void:
 		var project_data: ProjectData = _project_editor.save_data()
 		if not _project_manager.has_project(project_data.id):
 			_project_manager.add_project(project_data)
-		ResourceSaver.save(_project_manager.save_data(), _project_manager_res_path)
 		
 		var project_save_path: String = _project_manager.get_project_save_path(project_data.id)
 		ResourceSaver.save(project_data, project_save_path)
@@ -93,3 +92,7 @@ func _on_project_selector_open_project(project_id: int) -> void:
 	_project_editor.show()
 	await get_tree().process_frame
 	_project_editor.load_data(_project_manager.get_project_resource(project_id))
+
+
+func _on_project_manager_updated(project_id: int, mode: ProjectManager.UpdateMode) -> void:
+	ResourceSaver.save(_project_manager.save_data(), _project_manager_res_path)

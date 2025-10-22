@@ -27,4 +27,5 @@ mouse_filter = 1
 visible = false
 layout_mode = 1
 
+[connection signal="updated" from="ProjectManager" to="." method="_on_project_manager_updated"]
 [connection signal="open_project" from="ProjectSelector" to="." method="_on_project_selector_open_project"]
