@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgfss1l7gh1q5"]
+[gd_scene load_steps=9 format=3 uid="uid://cgfss1l7gh1q5"]
 
 [ext_resource type="Script" uid="uid://gsidprhen4f" path="res://project_selector/project_selector.gd" id="1_r3ht2"]
 [ext_resource type="Theme" uid="uid://ol31r6og1ebc" path="res://resources/themes/widnow_margin.tres" id="1_r8jv2"]
@@ -6,8 +6,10 @@
 [ext_resource type="FontFile" uid="uid://dig8d2l66j4yw" path="res://assets/fonts/Pixeloid_Font_0_5/OpenType (.otf)/PixeloidMono.otf" id="2_r3ht2"]
 [ext_resource type="PackedScene" uid="uid://ttbxotmbcls3" path="res://utils/gui/window.tscn" id="2_xnsdq"]
 [ext_resource type="Theme" uid="uid://d3ahh5vjw4na2" path="res://resources/themes/menu_button_theme.tres" id="5_anyo4"]
+[ext_resource type="Script" uid="uid://b3tthl52cto2k" path="res://project_selector/project_naming_prompt.gd" id="7_bgq6n"]
+[ext_resource type="Script" uid="uid://bv8vhpy56hf72" path="res://project_selector/create_project_prompt.gd" id="8_nsngd"]
 
-[node name="ProjectSelector" type="Control" node_paths=PackedStringArray("_project_selection_holder", "_open_project_button")]
+[node name="ProjectSelector" type="Control" node_paths=PackedStringArray("_project_selection_holder", "_open_project_button", "_project_naming_prompt", "_create_project_prompt")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +18,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r3ht2")
 _project_selection_holder = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Window/MarginContainer/ColorRect/MarginContainer/ScrollContainer/VBoxContainer")
-_open_project_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/OpenProjectButton")
+_open_project_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer/EditProjectButton")
+_project_naming_prompt = NodePath("MarginContainer/ProjectNamingPrompt")
+_create_project_prompt = NodePath("MarginContainer/CreateProjectPrompt")
 _project_select_button_scene = ExtResource("2_cemrp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -125,14 +129,216 @@ grow_vertical = 2
 theme = ExtResource("1_r8jv2")
 theme_override_constants/margin_left = 0
 
-[node name="OpenProjectButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="EditProjectButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme = ExtResource("5_anyo4")
-text = "Open"
+text = "Edit"
+
+[node name="DeleteProjectButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("5_anyo4")
+text = "Delete"
+
+[node name="RenameProjectButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("5_anyo4")
+text = "Rename"
+
+[node name="ProjectNamingPrompt" type="Control" parent="MarginContainer" node_paths=PackedStringArray("_name_line_edit")]
+visible = false
+layout_mode = 2
+script = ExtResource("7_bgq6n")
+_name_line_edit = NodePath("VBoxContainer/Window/MarginContainer/MarginContainer/VBoxContainer/LineEdit")
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/ProjectNamingPrompt"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.443137)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ProjectNamingPrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -90.0
+offset_right = 150.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Window" parent="MarginContainer/ProjectNamingPrompt/VBoxContainer" instance=ExtResource("2_xnsdq")]
+z_index = 0
+custom_minimum_size = Vector2(300, 140)
+layout_mode = 2
+
+[node name="ColorRect" parent="MarginContainer/ProjectNamingPrompt/VBoxContainer/Window/MarginContainer" index="0"]
+z_index = 0
+z_as_relative = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ProjectNamingPrompt/VBoxContainer/Window/MarginContainer" index="1"]
+layout_mode = 2
+theme = ExtResource("1_r8jv2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ProjectNamingPrompt/VBoxContainer/Window/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ProjectNamingPrompt/VBoxContainer/Window/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r3ht2")
+theme_override_font_sizes/font_size = 18
+text = "Project Name"
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ProjectNamingPrompt/VBoxContainer/Window/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r3ht2")
+theme_override_font_sizes/font_size = 18
+placeholder_text = "Untitled Project"
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/ProjectNamingPrompt/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+color = Color(0.709804, 0.737255, 0.796078, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ProjectNamingPrompt/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ProjectNamingPrompt/VBoxContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RenameButton" type="Button" parent="MarginContainer/ProjectNamingPrompt/VBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_anyo4")
+text = "Rename"
+
+[node name="CancelButton" type="Button" parent="MarginContainer/ProjectNamingPrompt/VBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_anyo4")
+text = "Cancel"
+
+[node name="CreateProjectPrompt" type="Control" parent="MarginContainer" node_paths=PackedStringArray("_name_line_edit")]
+visible = false
+layout_mode = 2
+script = ExtResource("8_nsngd")
+_name_line_edit = NodePath("VBoxContainer/Window/MarginContainer/MarginContainer/VBoxContainer/LineEdit")
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/CreateProjectPrompt"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.443137)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CreateProjectPrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -90.0
+offset_right = 150.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Window" parent="MarginContainer/CreateProjectPrompt/VBoxContainer" instance=ExtResource("2_xnsdq")]
+z_index = 0
+custom_minimum_size = Vector2(300, 140)
+layout_mode = 2
+
+[node name="ColorRect" parent="MarginContainer/CreateProjectPrompt/VBoxContainer/Window/MarginContainer" index="0"]
+z_index = 0
+z_as_relative = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CreateProjectPrompt/VBoxContainer/Window/MarginContainer" index="1"]
+layout_mode = 2
+theme = ExtResource("1_r8jv2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CreateProjectPrompt/VBoxContainer/Window/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CreateProjectPrompt/VBoxContainer/Window/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r3ht2")
+theme_override_font_sizes/font_size = 18
+text = "Project Name"
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/CreateProjectPrompt/VBoxContainer/Window/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r3ht2")
+theme_override_font_sizes/font_size = 18
+placeholder_text = "Untitled Project"
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/CreateProjectPrompt/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+color = Color(0.709804, 0.737255, 0.796078, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CreateProjectPrompt/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CreateProjectPrompt/VBoxContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CreateButton" type="Button" parent="MarginContainer/CreateProjectPrompt/VBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_anyo4")
+text = "Create"
+
+[node name="CancelButton" type="Button" parent="MarginContainer/CreateProjectPrompt/VBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_anyo4")
+text = "Cancel"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ColorRect/MarginContainer/NewProjectButton" to="." method="_on_new_project_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/OpenProjectButton" to="." method="_on_project_open_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer/EditProjectButton" to="." method="_on_project_open_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer/DeleteProjectButton" to="." method="_on_project_open_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/HBoxContainer/RenameProjectButton" to="." method="_on_project_open_pressed"]
+[connection signal="name_project" from="MarginContainer/ProjectNamingPrompt" to="." method="_on_project_naming_prompt_name_project"]
+[connection signal="pressed" from="MarginContainer/ProjectNamingPrompt/VBoxContainer/ColorRect/MarginContainer/HBoxContainer/RenameButton" to="MarginContainer/ProjectNamingPrompt" method="_on_rename_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ProjectNamingPrompt/VBoxContainer/ColorRect/MarginContainer/HBoxContainer/CancelButton" to="MarginContainer/ProjectNamingPrompt" method="_on_cancel_button_pressed"]
+[connection signal="cancel" from="MarginContainer/CreateProjectPrompt" to="." method="_on_create_project_prompt_cancel"]
+[connection signal="create_project" from="MarginContainer/CreateProjectPrompt" to="." method="_on_create_project_prompt_create_project"]
+[connection signal="pressed" from="MarginContainer/CreateProjectPrompt/VBoxContainer/ColorRect/MarginContainer/HBoxContainer/CreateButton" to="MarginContainer/CreateProjectPrompt" method="_on_create_button_pressed"]
+[connection signal="pressed" from="MarginContainer/CreateProjectPrompt/VBoxContainer/ColorRect/MarginContainer/HBoxContainer/CancelButton" to="MarginContainer/CreateProjectPrompt" method="_on_cancel_button_pressed"]
 
 [editable path="MarginContainer/VBoxContainer/HBoxContainer/Window"]
+[editable path="MarginContainer/ProjectNamingPrompt/VBoxContainer/Window"]
+[editable path="MarginContainer/CreateProjectPrompt/VBoxContainer/Window"]

@@ -31,8 +31,10 @@ func load_data(data: ProjectManagerData):
 
 # ------------------------------------------------------------------------------
 ## Project add, modify, and delete
-func new_project():
+func new_project(project_name: String = ""):
 	var new_project: ProjectData = ProjectData.new()
+	if project_name != "":
+		new_project.name = project_name
 	add_project(new_project)
 	ResourceSaver.save(new_project, project_ref_dict[new_project.id].project_resource_path)
 

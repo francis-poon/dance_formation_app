@@ -5,6 +5,8 @@ signal open_project(project_id: int)
 
 @export var _project_selection_holder: Control
 @export var _open_project_button: Button
+@export var _project_naming_prompt: ProjectNamingPrompt
+@export var _create_project_prompt: CreateProjectPrompt
 @export var _project_select_button_scene: PackedScene
 
 var _project_manager: ProjectManager
@@ -50,7 +52,7 @@ func _delete_project_select_button(project_id: int):
  
 func _on_new_project_button_pressed():
 	# Show new project screen with project name later on
-	_project_manager.new_project()
+	_create_project_prompt.open()
 
 func _on_delete_project_button_pressed():
 	pass
@@ -88,3 +90,15 @@ func _on_project_manager_update(project_id: int, mode: ProjectManager.UpdateMode
 			_add_project_select_button(project_id)
 		ProjectManager.UpdateMode.DELETE:
 			pass
+
+
+func _on_project_naming_prompt_name_project(project_name: String) -> void:
+	pass # Replace with function body.
+
+
+func _on_create_project_prompt_cancel() -> void:
+	pass # Replace with function body.
+
+
+func _on_create_project_prompt_create_project(project_name: String) -> void:
+	_project_manager.new_project(project_name)
