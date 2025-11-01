@@ -47,7 +47,9 @@ func _add_project_select_button(project_id: int):
 	_project_selection_holder.add_child(project_selection_button)
 
 func _delete_project_select_button(project_id: int):
-	pass
+	if _project_selection_button_dict.has(project_id):
+		_project_selection_button_dict[project_id].queue_free()
+		_project_selection_button_dict.erase(project_id)
 
 # ------------------------------------------------------------------------------
 ## Handlers for when GUI request project manager to add, modify, or delete
@@ -77,7 +79,9 @@ func _on_edit_project_pressed():
 	open_project.emit(_selected_project_button.project_id)
 
 func _on_delete_project_pressed():
-	pass
+	if _selected_project_button == null:
+		return
+	_project_manager.delete_project(_selected_project_button.project_id)
 
 func _on_rename_project_pressed():
 	if _selected_project_button:
@@ -101,7 +105,7 @@ func _on_project_manager_update(project_id: int, mode: ProjectManager.UpdateMode
 		ProjectManager.UpdateMode.ADD:
 			_add_project_select_button(project_id)
 		ProjectManager.UpdateMode.DELETE:
-			pass
+			_delete_project_select_button(project_id)
 
 
 func _on_project_naming_prompt_name_project(project_name: String) -> void:

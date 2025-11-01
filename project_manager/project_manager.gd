@@ -55,9 +55,11 @@ func rename_project(project_id: int, project_name: String):
 		updated.emit(project_id, UpdateMode.MODIFY)
 
 func delete_project(project_id: int):
-	print("Warning ProjectManager.delete_project not implemented")
-	updated.emit(project_id, UpdateMode.DELETE)
-	pass
+	if project_ref_dict.has(project_id):
+		var project_ref: ProjectReference = project_ref_dict[project_id]
+		DirAccess.remove_absolute(project_ref.project_resource_path)
+		project_ref_dict.erase(project_id)
+		updated.emit(project_id, UpdateMode.DELETE)
 
 # ------------------------------------------------------------------------------
 ## Project data getters
